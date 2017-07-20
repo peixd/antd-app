@@ -19,31 +19,11 @@ class BottomNav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 0,
-            hidden: false
+            selectedTab: 1,
+            hidden: false,
+            favoritesCnt: 0,
         };
     }
-
-    /*renderContent(pageText) {
-        console.log('there', pageText)
-        return (
-            <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-                <div style={{ paddingTop: 60 }}>你已点击“{pageText}” tab， 当前展示“{pageText}”信息</div>
-                <a style={{ display: 'block', marginTop: 40, marginBottom: 600, color: '#108ee9' }}
-                   onClick={(e) => {
-                       e.preventDefault();
-                       this.setState({
-                           hidden: !this.state.hidden,
-                       }, function() {
-                           console.log('state changed.')
-                       });
-                   }}
-                >
-                    点击切换 tab-bar 显示/隐藏
-                </a>
-            </div>
-        );
-    }*/
 
     render() {
         return (
@@ -53,20 +33,6 @@ class BottomNav extends React.Component {
                 barTintColor="white"
                 hidden={this.state.hidden}
             >
-                <TabBar.Item
-                    icon={<Icon type={require('../svgs/search-o.svg')} />}
-                    selectedIcon={<Icon type={require('../svgs/search.svg')} />}
-                    title="查询"
-                    key="查询"
-
-                    selected={this.state.selectedTab === 0}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: 0,
-                        }, () => this.props.history.push('/'));
-                    }}
-                    data-seed="logId1"
-                />
 
                 <TabBar.Item
                     icon={<Icon type={require('../svgs/info-circle-o.svg')} />}
@@ -74,12 +40,27 @@ class BottomNav extends React.Component {
                     title="政策"
                     key="政策"
                     dot
+                    selected={this.state.selectedTab === 0}
+                    onPress={() => {
+                        this.setState({
+                            selectedTab: 0,
+                        }, () => this.props.history.push('/info'));
+                    }}
+                />
+
+                <TabBar.Item
+                    icon={<Icon type={require('../svgs/search-o.svg')} />}
+                    selectedIcon={<Icon type={require('../svgs/search.svg')} />}
+                    title="查询"
+                    key="查询"
                     selected={this.state.selectedTab === 1}
                     onPress={() => {
                         this.setState({
                             selectedTab: 1,
-                        }, () => this.props.history.push('/info'));
+                            favoritesCnt: 2
+                        }, () => this.props.history.push('/'));
                     }}
+                    data-seed="logId1"
                 />
 
                 <TabBar.Item
@@ -87,7 +68,7 @@ class BottomNav extends React.Component {
                     selectedIcon={<Icon type={require('../svgs/star.svg')} />}
                     title="收藏"
                     key="收藏"
-                    badge={1}
+                    badge={this.state.favoritesCnt}
                     selected={this.state.selectedTab === 2}
                     onPress={() => {
                         this.setState({
