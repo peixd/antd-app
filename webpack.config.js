@@ -32,31 +32,43 @@ var config = {
                 exclude: [path.resolve(__dirname, "node_modules")],
                 loader: 'babel-loader'
             },
-            { test: /\.(jpg|png)$/, loader: "url-loader?limit=8192" },
             {
-                test: /\.(svg)$/i, loader: 'svg-sprite-loader', include: [
-                require.resolve('antd-mobile').replace(/warn\.js$/, ''),  // 1. 属于 antd-mobile 内置 svg 文件
-                // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 自己私人的 svg 存放目录
-            ]
+                test: /\.(jpg|png)$/,
+                loader: "url-loader?limit=8192"
+            },
+            {
+                test: /\.(svg)$/i,
+                loader: 'svg-sprite-loader',
+                include: [
+                    require.resolve('antd-mobile').replace(/warn\.js$/, ''),  // 1. 属于 antd-mobile 内置 svg 文件
+                    path.resolve(__dirname, 'app/svgs'),  // 自己私人的 svg 存放目录
+                ]
             },
             // 注意：如下不使用 ExtractTextPlugin 的写法，不能单独 build 出 css 文件
             // { test: /\.less$/i, loaders: ['style-loader', 'css-loader', 'less-loader'] },
             // { test: /\.css$/i, loaders: ['style-loader', 'css-loader'] },
             {
-                test: /\.less$/i, use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: [
-                    'css-loader', { loader: 'postcss-loader', options: postcssOpts }, 'less-loader'
-                ]
-            })
+                test: /\.less$/i,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: postcssOpts
+                        },
+                        'less-loader'
+                    ]
+                })
             },
             {
-                test: /\.css$/i, use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: [
-                    'css-loader', { loader: 'postcss-loader', options: postcssOpts }
-                ]
-            })
+                test: /\.css$/i,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader', { loader: 'postcss-loader', options: postcssOpts }
+                    ]
+                })
             }
         ]
     },
