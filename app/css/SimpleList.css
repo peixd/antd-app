@@ -1,0 +1,33 @@
+.phone_number_item_container {
+    padding: 0 0.2rem;
+    background-color: white;
+    font-size: 0.2rem;
+}
+.phone_number_price {
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+}
+.font_style {
+    font-size: 0.3rem;
+    color: #FF6E27;
+}
+.phone_number {
+    text-align: left;
+    font-size: 0.35rem;
+    color: #FF6E27;
+}
+.phone_number_item_container {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.5em;
+}
+.phone_number_details {
+    margin: 0rem 0.2rem;
+}
+.phone_number_price_details {
+    margin: 0rem 0rem;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
