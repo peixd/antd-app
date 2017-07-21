@@ -1,6 +1,6 @@
 import React from 'react';
-import { ListView } from 'antd-mobile';
-
+import ListView from 'antd-mobile/lib/list-view';
+import '../css/PhoneNubmerList.css'
 /***
 * phoneNumber : 177055566666
 * statusName: 启用未激活
@@ -22,9 +22,6 @@ function MyBody(props) {
 
 const data = [
     {
-        img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-        title: 'Meet hotel',
-        des: '不是所有的兼职汪都需要风吹日晒',
         phoneNumber: '17705566666',
         statusName: '启用未激活',
         prePnLevelId: 10,
@@ -34,14 +31,22 @@ const data = [
         name: '0556号段专属号池'
     },
     {
-        img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
-        title: 'McDonald\'s invites you',
-        des: '不是所有的兼职汪都需要风吹日晒',
+        phoneNumber: '17705566666',
+        statusName: '启用未激活',
+        prePnLevelId: 10,
+        pnLevelId: 10,
+        realPnLowPrice: 889,
+        realPreStorePrice: 5000,
+        name: '0556号段专属号池'
     },
     {
-        img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
-        title: 'Eat the week',
-        des: '不是所有的兼职汪都需要风吹日晒',
+        phoneNumber: '17705566666',
+        statusName: '启用未激活',
+        prePnLevelId: 10,
+        pnLevelId: 10,
+        realPnLowPrice: 889,
+        realPreStorePrice: 5000,
+        name: '0556号段专属号池'
     },
 ];
 let index = data.length - 1;
@@ -50,9 +55,11 @@ const NUM_SECTIONS = 5;
 const NUM_ROWS_PER_SECTION = 5;
 let pageIndex = 0;
 
-class Demo extends React.Component {
+class PhoneNumberList extends React.Component {
     constructor(props) {
         super(props);
+
+        // comment by simpleasABC.
         const getSectionData = (dataBlob, sectionID) => dataBlob[sectionID];
         const getRowData = (dataBlob, sectionID, rowID) => dataBlob[rowID];
 
@@ -89,6 +96,11 @@ class Demo extends React.Component {
             dataSource: dataSource.cloneWithRowsAndSections(this.dataBlob, this.sectionIDs, this.rowIDs),
             isLoading: true,
         };
+
+        /*this.state = {
+            dataSource: data,
+            idLoading: true
+        };*/
     }
 
     componentDidMount() {
@@ -97,13 +109,19 @@ class Demo extends React.Component {
         // setTimeout(() => this.refs.lv.scrollTo(0, 120), 800); // recommend usage
 
         // simulate initial Ajax
-        setTimeout(() => {
+
+        // comment by simpleasABC
+        /*setTimeout(() => {
             this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRowsAndSections(this.dataBlob, this.sectionIDs, this.rowIDs),
                 isLoading: false,
             });
-        }, 600);
+        }, 600);*/
+        this.setState({
+            dataSource: data,
+            isLoading: false,
+        });
     }
 
     // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
@@ -115,7 +133,7 @@ class Demo extends React.Component {
     //   }
     // }
 
-    onEndReached = (event) => {
+    onEndReached(event) {
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false
         if (this.state.isLoading && !this.state.hasMore) {
@@ -149,14 +167,26 @@ class Demo extends React.Component {
             }
             const obj = data[index--];
             return (
-                <div key={rowID} className="row">
-                    <div className="row-title">{obj.title}</div>
+                <div key={rowID} className="phone_number_item_container">
+                    {/*<div className="row-title">{obj.title}</div>
                     <div style={{ display: '-webkit-box', display: 'flex', padding: '0.3rem 0' }}>
                         <img style={{ height: '1.28rem', marginRight: '0.3rem' }} src={obj.img} alt="icon" />
                         <div className="row-text">
                             <div style={{ marginBottom: '0.16rem', fontWeight: 'bold' }}>{obj.des}</div>
                             <div><span style={{ fontSize: '0.6rem', color: '#FF6E27' }}>35</span>¥</div>
                         </div>
+                    </div>*/}
+                    <div className='phone_number_info_item'>
+                        <div className='phone_number'>{data.phoneNumber}</div>
+                        <div className='phone_number_details'>
+                            <div>状态: {data.statusName}</div>
+                            <div>号池: {data.name}</div>
+                            <div>等级/原等级: {data.pnLevelId}/{data.prePnLevelId}</div>
+                        </div>
+                    </div>
+                    <div className='phone_number_price_details'>
+                        <div>保底:<span className='font_style'>{data.realPnLowPrice}</span>元</div>
+                        <div>预存:<span className='font_style'>{data.realPreStorePrice}</span>元</div>
                     </div>
                 </div>
             );
@@ -193,4 +223,4 @@ class Demo extends React.Component {
     }
 }
 
-ReactDOM.render(<Demo />, mountNode);
+export default PhoneNumberList;

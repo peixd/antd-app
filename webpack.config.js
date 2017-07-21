@@ -24,6 +24,7 @@ var config = {
         modules: [path.resolve(__dirname, 'node_modules'), path.join(__dirname, 'app')],
         extensions: ['.web.js', '.jsx', '.js', '.json'],
     },
+    devtool: "source-map",
     module: {
         rules: [
             {

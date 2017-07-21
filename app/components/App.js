@@ -7,6 +7,10 @@ import 'antd-mobile/lib/icon/style/css';
 import Search from './Search';
 import Info from './Info';
 import Favorites from './Favorites';
+import QueryForm from './QueryForm';
+import PhoneNumberList from './PhoneNumberList';
+import SimpleList from './SimpleList';
+import '../css/App.css';
 
 const ReactRouter = require('react-router-dom');
 const Router = ReactRouter.BrowserRouter;
@@ -27,57 +31,59 @@ class BottomNav extends React.Component {
 
     render() {
         return (
-            <TabBar
-                unselectedTintColor="#949494"
-                tintColor="#33A3F4"
-                barTintColor="white"
-                hidden={this.state.hidden}
-            >
+            <div className="nav-container">
+                <TabBar
+                    unselectedTintColor="#949494"
+                    tintColor="#33A3F4"
+                    barTintColor="white"
+                    hidden={this.state.hidden}
+                >
 
-                <TabBar.Item
-                    icon={<Icon type={require('../svgs/info-circle-o.svg')} />}
-                    selectedIcon={<Icon type={require('../svgs/info-circle.svg')} />}
-                    title="政策"
-                    key="政策"
-                    dot
-                    selected={this.state.selectedTab === 0}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: 0,
-                        }, () => this.props.history.push('/info'));
-                    }}
-                />
+                    <TabBar.Item
+                        icon={<Icon type={require('../svgs/info-circle-o.svg')} />}
+                        selectedIcon={<Icon type={require('../svgs/info-circle.svg')} />}
+                        title="政策"
+                        key="政策"
+                        dot
+                        selected={this.state.selectedTab === 0}
+                        onPress={() => {
+                            this.setState({
+                                selectedTab: 0,
+                            }, () => this.props.history.push('/info'));
+                        }}
+                    />
 
-                <TabBar.Item
-                    icon={<Icon type={require('../svgs/search-o.svg')} />}
-                    selectedIcon={<Icon type={require('../svgs/search.svg')} />}
-                    title="查询"
-                    key="查询"
-                    selected={this.state.selectedTab === 1}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: 1,
-                            favoritesCnt: 2
-                        }, () => this.props.history.push('/'));
-                    }}
-                    data-seed="logId1"
-                />
+                    <TabBar.Item
+                        icon={<Icon type={require('../svgs/search-o.svg')} />}
+                        selectedIcon={<Icon type={require('../svgs/search.svg')} />}
+                        title="查询"
+                        key="查询"
+                        selected={this.state.selectedTab === 1}
+                        onPress={() => {
+                            this.setState({
+                                selectedTab: 1,
+                                favoritesCnt: 2
+                            }, () => this.props.history.push('/'));
+                        }}
+                        data-seed="logId1"
+                    />
 
-                <TabBar.Item
-                    icon={<Icon type={require('../svgs/star-o.svg')} />}
-                    selectedIcon={<Icon type={require('../svgs/star.svg')} />}
-                    title="收藏"
-                    key="收藏"
-                    badge={this.state.favoritesCnt}
-                    selected={this.state.selectedTab === 2}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: 2,
-                        }, () => this.props.history.push('/favorites'));
-                    }}
-                />
+                    <TabBar.Item
+                        icon={<Icon type={require('../svgs/star-o.svg')} />}
+                        selectedIcon={<Icon type={require('../svgs/star.svg')} />}
+                        title="收藏"
+                        key="收藏"
+                        badge={this.state.favoritesCnt}
+                        selected={this.state.selectedTab === 2}
+                        onPress={() => {
+                            this.setState({
+                                selectedTab: 2,
+                            }, () => this.props.history.push('/favorites'));
+                        }}
+                    />
 
-            </TabBar>
+                </TabBar>
+            </div>
         );
     }
 }
@@ -102,8 +108,8 @@ class App extends React.Component {
             <Router>
                 <div>
                     <Switch>
-                        <Route exact path='/' component={Search} />
-                        <Route path='/info' component={Info} />
+                        <Route exact path='/' component={SimpleList} />
+                        <Route path='/info' component={QueryForm} />
                         <Route path='/favorites' component={Favorites} />
                     </Switch>
                     <WithRouterBottomNav />
