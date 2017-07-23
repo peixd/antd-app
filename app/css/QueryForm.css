@@ -1,0 +1,6 @@
+.flag_container {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+}
