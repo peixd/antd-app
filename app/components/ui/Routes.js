@@ -13,26 +13,22 @@ const Route = ReactRouter.Route;
 const Switch = ReactRouter.Switch;
 const WithRouter = ReactRouter.withRouter;
 
-const WithRouterBottomNav = WithRouter(BottomNav);
+//const WithRouterBottomNav = WithRouter(BottomNav);
 
 // 实现路由
-class Routes extends React.Component {
-    render() {
-        return (
-            <Router>
-                <div>
-                    <Switch>
-                        <Route exact path='/' component={QueryForm} />
-                        <Route path='/show_result' component={SimpleList} />
-                        <Route path='/info' component={Info} />
-                        <Route path='/favorites' component={Favorites} />
-                    </Switch>
-                    <WithRouterBottomNav />
-                </div>
-            </Router>
-        );
-    }
-}
+const Routes = ({showNavBar}) =>
+    (
+        <Router>
+            <div>
+                <Switch>
+                    <Route exact path='/' component={SimpleList} />
+                    <Route path='/info' component={QueryForm} />
+                    <Route path='/favorites' component={Favorites} />
+                </Switch>
+                {/*<WithRouterBottomNav />*/}
+                <BottomNav />
+            </div>
+        </Router>
+    );
 
-
-export default Routes;
+module.exports = Routes;

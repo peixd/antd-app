@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Routes = require('./components/ui/Routes');
+var Routes = require('./components/containers/Routes');
 
 // redux
 import C from './constants';
