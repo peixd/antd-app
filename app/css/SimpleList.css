@@ -11,16 +11,18 @@
 .font_style {
     font-size: 0.3rem;
     color: #FF6E27;
+    font-weight: bold;
 }
 .phone_number {
     text-align: left;
-    font-size: 0.35rem;
+    font-size: 0.32rem;
+    font-weight: bold;
     color: #FF6E27;
 }
 .phone_number_item_container {
     display: flex;
     justify-content: space-around;
-    font-size: 0.5em;
+    font-size: 0.25em;
 }
 .phone_number_details {
     margin: 0rem 0.2rem;
