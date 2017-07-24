@@ -28,12 +28,21 @@ export const showNavBar = (state=true, action) =>
     (action.type === C.SHOW_NAV_BAR) ?
         action.payload : state
 
+export const generalQuery = (state=null, action) => {
+    switch (action.type) {
+        case C.GENERAL_QUERY:
+            return action.payload
+        default:
+            return state
+    }
+}
 
 export default combineReducers({
-  favorites,
-  total,
-  result,
-  showNavBar
+    favorites,
+    total,
+    result,
+    showNavBar,
+    generalQuery,
 })
 
 

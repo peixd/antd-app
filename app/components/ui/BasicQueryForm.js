@@ -99,11 +99,7 @@ class BasicQueryForm extends React.Component {
                                 <div>查询</div>
                             </div>
                         }
-                        /*extra={<Button size="small"
-                                       style={{padding:0.1rem}}
-                                       className="btn"
-                                       icon={this.state.general_querying ? "loading" : "search"}>查询
-                                </Button>}*/
+
                         onExtraClick={this.onExtraClickHandler}
                         placeholder="11位以内号码">
                         手机号码

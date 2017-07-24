@@ -1,12 +1,12 @@
 import React from 'react';
 import 'antd-mobile/lib/tab-bar/style/css';
 import 'antd-mobile/lib/icon/style/css';
-import Info from './Info';
-import Favorites from './Favorites';
-import SimpleList from '../containers/SimpleList';
-import '../../css/App.css';
-import BottomNav from '../containers/BottomNav';
-import BasicQueryForm from './BasicQueryForm';
+import Info from './components/ui/Info';
+import Favorites from './components/ui/Favorites';
+import SimpleList from './components/containers/SimpleList';
+import './css/App.css';
+import BottomNav from './components/containers/BottomNav';
+import BasicQueryForm from './components/containers/BasicQueryForm';
 
 const ReactRouter = require('react-router-dom');
 const Router = ReactRouter.BrowserRouter;

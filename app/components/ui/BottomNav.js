@@ -85,7 +85,6 @@ class BottomNav extends React.Component {
                         }}
                     />
 
-
                     <TabBar.Item
                         icon={<div>5/11</div>}
                         key="page"
@@ -103,7 +102,6 @@ class BottomNav extends React.Component {
                     />
 
                 </TabBar>
-
             </div>
         );
     }
