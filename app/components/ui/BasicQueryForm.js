@@ -5,13 +5,12 @@ import InputItem from 'antd-mobile/lib/input-item';
 import 'antd-mobile/lib/input-item/style/css';
 import WhiteSpace from 'antd-mobile/lib/white-space';
 import 'antd-mobile/lib/white-space/style/css';
-import createForm from 'rc-form/lib/createForm';
 import Button from 'antd-mobile/lib/button';
 import 'antd-mobile/lib/button/style/css';
 import Icon from 'antd-mobile/lib/icon';
 import 'antd-mobile/lib/icon/style/css';
 import '../../css/QueryForm.css';
-
+import createForm from 'rc-form/lib/createForm';
 import Picker from 'antd-mobile/lib/picker';
 import 'antd-mobile/lib/picker/style/css';
 import Toast from 'antd-mobile/lib/toast';
@@ -83,14 +82,28 @@ class BasicQueryForm extends React.Component {
                 <NavBar mode="dark"
                         iconName="false"
                 >靓号查询</NavBar>
-                <List renderHeader={() => '简易查询'}>
+                <List renderHeader={() =>
+                    <div style={{fontWeight:'bold',color:'#108ee9'}}>
+                        简易查询
+                    </div>
+                }>
                     <InputItem
                         type="money"
                         maxLength={11}
                         disabled={this.state.general_querying}
                         value={this.state.phoneNum}
                         onChange={(phoneNum) => this.setState({phoneNum})}
-                        extra={<Icon type={this.state.general_querying ? "loading" : "search"} />}
+                        extra={
+                            <div className="general_query_div">
+                                <div><Icon type={this.state.general_querying ? "loading" : "search"} /></div>
+                                <div>查询</div>
+                            </div>
+                        }
+                        /*extra={<Button size="small"
+                                       style={{padding:0.1rem}}
+                                       className="btn"
+                                       icon={this.state.general_querying ? "loading" : "search"}>查询
+                                </Button>}*/
                         onExtraClick={this.onExtraClickHandler}
                         placeholder="11位以内号码">
                         手机号码
@@ -99,7 +112,11 @@ class BasicQueryForm extends React.Component {
 
                 <WhiteSpace size="xl"/>
 
-                <List renderHeader={() => '高级查询'}>
+                <List renderHeader={() =>
+                    <div style={{fontWeight:'bold',color:'#108ee9'}}>
+                        高级查询
+                    </div>
+                }>
 
                     <Picker data={prefix} cols={1} {...getFieldProps('prefixThree')} className="forss">
                         <List.Item arrow="horizontal">号首3位(可不选)</List.Item>
@@ -146,6 +163,7 @@ class BasicQueryForm extends React.Component {
                 <Button
                     className="btn"
                     type="primary"
+                    style={{height: '0.7rem'}}
                     disabled={this.state.advanced_querying}
                     icon={this.state.advanced_querying ? "loading" : "search"}>
                     {this.state.advanced_querying ? "正在查询..." : "查询"}
@@ -155,6 +173,4 @@ class BasicQueryForm extends React.Component {
     }
 }
 
-const QueryForm = createForm()(BasicQueryForm);
-
-export default QueryForm;
+export default createForm()(BasicQueryForm);

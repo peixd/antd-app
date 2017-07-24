@@ -12,6 +12,7 @@ class BottomNav extends React.Component {
             hidden: false,
             favoritesCnt: 0,
         };
+        console.log('navbar', props);
     }
 
     render() {
@@ -21,7 +22,7 @@ class BottomNav extends React.Component {
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
                     barTintColor="white"
-                    hidden={this.state.hidden}
+                    hidden={!this.props.showNavBar}
                 >
 
                     <TabBar.Item
@@ -69,6 +70,40 @@ class BottomNav extends React.Component {
                     />
 
                 </TabBar>
+
+                <TabBar
+                    unselectedTintColor="#949494"
+                    tintColor="#33A3F4"
+                    barTintColor="white"
+                    hidden={this.props.showNavBar}
+                >
+                    <TabBar.Item
+                        icon={<Icon type={require('../../svgs/prev.svg')} />}
+                        key="prev"
+                        onPress={() => {
+                            console.log('clicked');
+                        }}
+                    />
+
+
+                    <TabBar.Item
+                        icon={<div>5/11</div>}
+                        key="page"
+                        onPress={() => {
+                            console.log('clicked');
+                        }}
+                    />
+
+                    <TabBar.Item
+                        icon={<Icon type={require('../../svgs/next.svg')} />}
+                        key="next"
+                        onPress={() => {
+                            console.log('clicked');
+                        }}
+                    />
+
+                </TabBar>
+
             </div>
         );
     }

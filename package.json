@@ -4,7 +4,7 @@
   "description": "Project for ant design ui",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server",
+    "start": "./node_modules/.bin/webpack-dev-server --host 134.70.103.102",
     "build": "set NODE_ENV='production' && webpack"
   },
   "author": "simpleasABC",
