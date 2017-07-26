@@ -18,6 +18,12 @@ import 'antd-mobile/lib/toast/style/css';
 
 import NavBar from 'antd-mobile/lib/nav-bar';
 import 'antd-mobile/lib/nav-bar/style/css';
+import C from '../../constants';
+
+
+const api = require('../../utils/api');
+const queryPhoneNumber = api.queryPhoneNumber;
+const queryPhoneNumberAndTotal = api.queryPhoneNumberAndTotal;
 
 const ReactRouter = require('react-router-dom');
 const Link = ReactRouter.Link;
@@ -60,14 +66,21 @@ class BasicQueryForm extends React.Component {
 
     // 处理简易查询事件
     onExtraClickHandler() {
-        console.log('clicked');
         if(this.state.phoneNum && this.state.phoneNum.length > 0) {
             // 开始查询
             console.log('query start');
             this.setState({general_querying: true});
-
-            // mock 数据查询, 最终查询到结果
             this.setState({init: true});
+            // mock 数据查询, 最终查询到结果, 其形式为 {phonenumberArray, total}
+            var result = queryPhoneNumberAndTotal({"phoneNumber": this.state.phoneNum, "currPage": 1, "pageSize": 10});
+            this.setState({init: false});
+            if(result.total <= 0) {
+                Toast.info("未查询到符合该条件的靓号.");
+            } else {
+                // 派发事件
+                this.props.onResultChange(result.phoneNumberList);
+            }
+
         } else {
             // toast 提示
             this.setState({general_querying: false});
@@ -99,7 +112,6 @@ class BasicQueryForm extends React.Component {
                                 <div>查询</div>
                             </div>
                         }
-
                         onExtraClick={this.onExtraClickHandler}
                         placeholder="11位以内号码">
                         手机号码
@@ -150,7 +162,7 @@ class BasicQueryForm extends React.Component {
                     >后4位
                     </InputItem>
 
-                    <Picker data={flags} cols={1} {...getFieldProps('tailFlag')} className="forss">
+                    <Picker data={flags} cols={1} {...getFieldProps('tailFlag')}>
                         <List.Item arrow="horizontal">选择靓号(如AAA)</List.Item>
                     </Picker>
                 </List>
@@ -159,7 +171,7 @@ class BasicQueryForm extends React.Component {
                 <Button
                     className="btn"
                     type="primary"
-                    style={{height: '0.7rem'}}
+                    /*style={{height: '0.7rem'}}*/
                     disabled={this.state.advanced_querying}
                     icon={this.state.advanced_querying ? "loading" : "search"}>
                     {this.state.advanced_querying ? "正在查询..." : "查询"}

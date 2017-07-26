@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import BasicQueryForm from '../ui/BasicQueryForm';
-import {addFav, removeFav} from '../../actions';
+import {addFav, removeFav, changeResult} from '../../actions';
 
 const mapStateToProps = (state, props) => {
-    console.log('state...', state)
-    console.log('props...', props)
-    return {}
+
 }
 
 const mapDispatchToProps = dispatch => ({
-    onGeneralQuery(phoneNum) {
-        dispatch(generyQuery(phoneNum))
+    onResultChange(data) {
+        dispatch(
+            changeResult(data)
+        )
     }
 })
 

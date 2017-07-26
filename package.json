@@ -4,7 +4,7 @@
   "description": "Project for ant design ui",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --host 134.70.103.102",
+    "start": "./node_modules/.bin/webpack-dev-server --host 134.70.103.102 --port 88",
     "build": "set NODE_ENV='production' && webpack"
   },
   "author": "simpleasABC",
@@ -44,6 +44,7 @@
     "antd-mobile-demo-data": "^0.1.4",
     "axios": "^0.16.0",
     "prop-types": "^15.5.4",
+    "qt": "^0.1.0",
     "rc-form": "^1.4.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
