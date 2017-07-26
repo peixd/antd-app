@@ -24,25 +24,36 @@ export const result = (state=[], action) =>
     (action.type === C.CHANGE_RESULT) ?
         action.payload : state
 
-export const showNavBar = (state=true, action) =>
-    (action.type === C.SHOW_NAV_BAR) ?
+export const showNavBar = (state=true, action) => {
+    console.log("SHOW_NAV_BAR...")
+    return (action.type === C.SHOW_NAV_BAR) ?
         action.payload : state
+}
 
-export const generalQuery = (state=null, action) => {
+export const queryParams = (state={}, action) => {
     switch (action.type) {
-        case C.GENERAL_QUERY:
+        case C.CHANGE_QUERY_PARAMS:
+            console.log("CHANGE_QUERY_PARAMS")
             return action.payload
+        case C.CHANGE_CURR_PAGE:
+            return Object.assign({}, state, {currPage: action.payload})
         default:
+            console.log("DEFAULT")
             return state
     }
 }
+
+export const generalQuery = (state=false, action) =>
+    (action.type === C.GENERAL_QUERY) ?
+        action.payload : state
 
 export default combineReducers({
     favorites,
     total,
     result,
     showNavBar,
-    generalQuery,
+    queryParams,
+    generalQuery
 })
 
 

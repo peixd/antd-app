@@ -2,87 +2,18 @@
 	"hasPhoneNumbers": false,
 	"messages": [],
 	"total": 0,
-	"result": [
-		{
-			"phoneNumber": "17705566666",
-			"statusName": "启用未激活",
-			"prePnLevelId": 10,
-			"pnLevelId": 10,
-			"realPnLowPrice": 889,
-			"realPreStorePrice": 5000,
-			"name": "0556号段专属号池"
-		},
-		{
-			"phoneNumber": "17705566666",
-			"statusName": "启用未激活",
-			"prePnLevelId": 10,
-			"pnLevelId": 10,
-			"realPnLowPrice": 889,
-			"realPreStorePrice": 5000,
-			"name": "0556号段专属号池"
-		},
-		{
-			"phoneNumber": "17705566666",
-			"statusName": "启用未激活",
-			"prePnLevelId": 10,
-			"pnLevelId": 10,
-			"realPnLowPrice": 889,
-			"realPreStorePrice": 5000,
-			"name": "0556号段专属号池"
-		},
-		{
-			"phoneNumber": "17705566666",
-			"statusName": "启用未激活",
-			"prePnLevelId": 10,
-			"pnLevelId": 10,
-			"realPnLowPrice": 889,
-			"realPreStorePrice": 5000,
-			"name": "0556号段专属号池"
-		},
-		{
-			"phoneNumber": "17705566666",
-			"statusName": "启用未激活",
-			"prePnLevelId": 10,
-			"pnLevelId": 10,
-			"realPnLowPrice": 889,
-			"realPreStorePrice": 5000,
-			"name": "0556号段专属号池"
-		},
-		{
-			"phoneNumber": "17705566666",
-			"statusName": "启用未激活",
-			"prePnLevelId": 10,
-			"pnLevelId": 10,
-			"realPnLowPrice": 889,
-			"realPreStorePrice": 5000,
-			"name": "0556号段专属号池"
-		},
-		{
-			"phoneNumber": "17705566666",
-			"statusName": "启用未激活",
-			"prePnLevelId": 10,
-			"pnLevelId": 10,
-			"realPnLowPrice": 889,
-			"realPreStorePrice": 5000,
-			"name": "0556号段专属号池"
-		},
-		{
-			"phoneNumber": "17705566666",
-			"statusName": "启用未激活",
-			"prePnLevelId": 10,
-			"pnLevelId": 10,
-			"realPnLowPrice": 889,
-			"realPreStorePrice": 5000,
-			"name": "0556号段专属号池"
-		}
-	],
+	"result": [],
 	"favorites": [],
 	"showNavBar": true,
-	"generalQueryParams": null,
-	"advancedQueryParams": {
-		"prefixThree": null,
-		"middle": null,
-		"tail": null,
-		"tailFlag": null
+	"generalQuery": false,
+	"queryParams": {
+		"phoneNumber": null,
+		"headThree": null,
+		"bodyFour": null,
+		"tailFour": null,
+		"tailReg": null,
+		"currPage": 0,
+		"pageSize": 10,
+		"totalPages": 0
 	}
 }

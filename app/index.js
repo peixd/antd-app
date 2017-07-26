@@ -11,10 +11,10 @@ import sampleData from './initialState';
 
 const data = require('./model/data_mocked');
 
-const initialState = (localStorage["redux-store"]) ?
-    JSON.parse(localStorage["redux-store"]) : sampleData;
+const initialState = sampleData;
 
-//console.log(initialState);
+if(localStorage["redux-store"])
+    initialState.favorites = JSON.parse(localStorage["redux-store"]).favorites;
 
 const saveState = () =>
     localStorage["redux-store"] = JSON.stringify(store.getState());

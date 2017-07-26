@@ -68,18 +68,42 @@ class BasicQueryForm extends React.Component {
     onExtraClickHandler() {
         if(this.state.phoneNum && this.state.phoneNum.length > 0) {
             // 开始查询
-            console.log('query start');
             this.setState({general_querying: true});
             this.setState({init: true});
             // mock 数据查询, 最终查询到结果, 其形式为 {phonenumberArray, total}
-            var result = queryPhoneNumberAndTotal({"phoneNumber": this.state.phoneNum, "currPage": 1, "pageSize": 10});
-            this.setState({init: false});
-            if(result.total <= 0) {
-                Toast.info("未查询到符合该条件的靓号.");
-            } else {
-                // 派发事件
-                this.props.onResultChange(result.phoneNumberList);
-            }
+
+            queryPhoneNumberAndTotal({"phoneNumber": this.state.phoneNum, "currPage": 1, "pageSize": 10}, true).then(
+                ({phoneNumberList, total}) => {
+                    this.setState({general_querying: false});
+                    if(total <= 0) {
+                        Toast.info("未查询到符合该条件靓号");
+                    } else {
+                        // onResultChange的入参为查询结果,
+                        // 查询参数对象 : (非generalQuery: false),
+                        // {generalQuery, phoneNumber, headThree, bodyFour, tailFour, tailReg, currPage, pageSize}
+                        const thisQueryParams = {
+                            phoneNumber: this.state.phoneNum,
+                            headThree: null,
+                            bodyFour: null,
+                            tailFour: null,
+                            tailReg: null,
+                            currPage: 1,
+                            pageSize: 10,
+                            totalPages: Math.ceil(total / 10)
+                        };
+
+                        this.props.onResultChange(phoneNumberList, thisQueryParams, true);
+                        this.props.history.push('/show_result');
+                        this.props.onShowNavBar(false);
+                    }
+
+                }).catch(
+                        err => {
+                            console.log(err.message);
+                            Toast.info(err.message);
+                            this.setState({general_querying: false});
+                        }
+                    );
 
         } else {
             // toast 提示

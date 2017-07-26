@@ -7,12 +7,12 @@ class BottomNav extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log('bottomnav', props)
         this.state = {
             selectedTab: 1,
             hidden: false,
             favoritesCnt: 0,
         };
-        console.log('navbar', props);
     }
 
     render() {
@@ -65,7 +65,7 @@ class BottomNav extends React.Component {
                         onPress={() => {
                             this.setState({
                                 selectedTab: 2,
-                            }, () => this.props.history.push('/favorites'));
+                            }, (e) => {e.preventDefault(); this.props.history.push('/favorites') });
                         }}
                     />
 
@@ -77,27 +77,32 @@ class BottomNav extends React.Component {
                     barTintColor="white"
                     hidden={this.props.showNavBar}
                 >
+
                     <TabBar.Item
-                        icon={<Icon type={require('../../svgs/prev.svg')} />}
+                        icon={
+                            this.props.queryParams.currPage > 1　?
+                            <Icon type={require('../../svgs/prev.svg')} /> :<div />
+                        }
                         key="prev"
                         onPress={() => {
-                            console.log('clicked');
+                            this.props.onChangePageQuery(this.props.queryParams, false, this.props.generalQuery);
                         }}
                     />
 
                     <TabBar.Item
-                        icon={<div>5/11</div>}
+                        icon={<div>{this.props.queryParams.currPage}/{this.props.queryParams.totalPages}</div>}
                         key="page"
-                        onPress={() => {
-                            console.log('clicked');
-                        }}
                     />
 
+
                     <TabBar.Item
-                        icon={<Icon type={require('../../svgs/next.svg')} />}
+                        icon={
+                            this.props.queryParams.currPage != this.props.queryParams.totalPages ?
+                            <Icon type={require('../../svgs/next.svg')} /> : <div />
+                        }
                         key="next"
                         onPress={() => {
-                            console.log('clicked');
+                            this.props.onChangePageQuery(this.props.queryParams, true, this.props.generalQuery);
                         }}
                     />
 
