@@ -16,9 +16,6 @@ const WithRouter = ReactRouter.withRouter;
 
 const WithRouterBottomNav = WithRouter(BottomNav);
 
-const policy_556 = require('./model/policy_for_0556.json');
-const policy_not_556 = require('./model/policy_for_not_0556.json');
-
 // 实现路由
 const Routes = () =>
     (
@@ -26,7 +23,7 @@ const Routes = () =>
             <div>
                 <Switch>
                     <Route exact path='/' component={BasicQueryForm} />
-                    <Route path='/info' render={() => (<Info policy_556={policy_556} policy_not_556={policy_not_556} />)}/>
+                    <Route path='/info' component={Info}/>
                     <Route path='/show_result' component={SimpleList} />
                     <Route path='/favorites' component={Favorites} />
                 </Switch>

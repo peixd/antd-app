@@ -1,15 +1,16 @@
 {
   "desc": [
-    "上述规则主要针对三连号，同等级的其他规则靓号比照上述规则执行",
+    "以下规则主要针对三连号，同等级的其他靓号比照执行",
     "其他5类号及以下靓号最多降两档使用",
     "2类及以上靓号不得受理任何话补",
-    "非0556号段2-10类均需签订靓号协议"
+    "非0556号段2-10类均需签订靓号协议",
+    "预存500,一次性到账"
   ],
   "items": [
     {
       "id": 1,
       "level": 7,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 299,
       "tail_desc": [
         666,
@@ -24,7 +25,7 @@
     {
       "id": 2,
       "level": 6,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 199,
       "tail_desc": [
         555,
@@ -35,7 +36,7 @@
     {
       "id": 3,
       "level": 6,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 169,
       "tail_desc": [
         "000",
@@ -48,7 +49,7 @@
     {
       "id": 4,
       "level": 5,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 129,
       "tail_desc": [
         "444"
@@ -58,7 +59,7 @@
     {
       "id": 5,
       "level": 9,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 399,
       "tail_desc": [
         "6666",
@@ -70,7 +71,7 @@
     {
       "id": 6,
       "level": 8,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 399,
       "tail_desc": [
         "5555",
@@ -81,7 +82,7 @@
     {
       "id": 7,
       "level": 8,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 399,
       "tail_desc": [
         "0000",
@@ -94,7 +95,7 @@
     {
       "id": 8,
       "level": 10,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 399,
       "tail_desc": [
         "66666",
@@ -106,7 +107,7 @@
     {
       "id": 9,
       "level": 9,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 399,
       "tail_desc": [
         "55555",
@@ -117,7 +118,7 @@
     {
       "id": 10,
       "level": 9,
-      "prerequisite": "预存500",
+      "prerequisite": "预存500,一次性到账",
       "ofr_charge": 399,
       "tail_desc": [
         "00000",
