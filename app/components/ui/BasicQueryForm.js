@@ -28,7 +28,7 @@ const queryPhoneNumberAndTotal = api.queryPhoneNumberAndTotal;
 const ReactRouter = require('react-router-dom');
 const Link = ReactRouter.Link;
 
-const flags = [
+const tailReg = [
     {label:'AA', value: 'AA'},
     {label:'AAA', value: 'AAA'},
     {label:'ABC', value: 'ABC'},
@@ -38,14 +38,14 @@ const flags = [
     {label:'AAAAA', value: 'AAAAA'},
 ];
 
-const prefix = [
-    {label: 133, value: 133},
-    {label: 153, value: 153},
-    {label: 173, value: 173},
-    {label: 177, value: 177},
-    {label: 180, value: 180},
-    {label: 181, value: 181},
-    {label: 189, value: 189},
+const headThree = [
+    {label: '133', value: '133'},
+    {label: '153', value: '153'},
+    {label: '173', value: '173'},
+    {label: '177', value: '177'},
+    {label: '180', value: '180'},
+    {label: '181', value: '181'},
+    {label: '189', value: '189'},
 ];
 
 class BasicQueryForm extends React.Component {
@@ -54,61 +54,106 @@ class BasicQueryForm extends React.Component {
         super(props);
         console.log(props)
         this.state = {
-            phoneNum: null,
-            prefix: null,
-            middle: null,
-            tail: null,
+            bodyFour: null,
+            headThree: [],
+            tailFour: null,
+            tailReg: [],
+            phoneNumber: null,
             general_querying: false,
             advanced_querying: false,
         }
+        this.queryPhoneNumberAndTotalFun = this.queryPhoneNumberAndTotalFun.bind(this);
         this.onExtraClickHandler = this.onExtraClickHandler.bind(this);
+        this.advancedQueryHandler = this.advancedQueryHandler.bind(this);
+    }
+
+    //input params are queryParams, generalQuery: boolean
+    queryPhoneNumberAndTotalFun(queryParams, generalQuery) {
+        return queryPhoneNumberAndTotal(queryParams, generalQuery).then(
+            ({phoneNumberList, total}) => {
+                this.setState( function(generalQuery) {
+                    if(generalQuery)
+                        return ({general_querying: false})
+                    else
+                        return ({advanced_querying: false})
+                });
+                if(total <= 0) {
+                    Toast.info("未查询到符合该条件靓号");
+                } else {
+                    // onResultChange的入参为查询结果,
+                    // 查询参数对象 : (非generalQuery: false),
+                    // {generalQuery, phoneNumber, headThree, bodyFour, tailFour, tailReg, currPage, pageSize}
+                    const headThree = (this.state.headThree && this.state.headThree.length > 0) ? this.state.headThree[0] : null;
+                    const tailReg = (this.state.tailReg && this.state.tailReg.length > 0) ? this.state.tailReg[0] : null;
+                    const thisQueryParams = {
+                        phoneNumber: this.state.phoneNumber,
+                        headThree: headThree,
+                        bodyFour: this.state.bodyFour,
+                        tailFour: this.tailFour,
+                        tailReg: tailReg,
+                        currPage: 1,
+                        pageSize: 10,
+                        totalPages: Math.ceil(total / 10)
+                    };
+
+                    this.props.onResultChange(phoneNumberList, thisQueryParams, generalQuery);
+                    this.props.history.push('/show_result');
+                    this.props.onShowNavBar(false);
+                }
+
+            }).catch(
+                err => {
+                    console.log(err.message);
+                    Toast.fail(err.message);
+                    this.setState( function(generalQuery) {
+                        if(generalQuery)
+                            return ({general_querying: false})
+                        else
+                            return ({advanced_querying: false})
+                    });
+                });
     }
 
     // 处理简易查询事件
     onExtraClickHandler() {
-        if(this.state.phoneNum && this.state.phoneNum.length > 0) {
+        if(this.state.phoneNumber && this.state.phoneNumber.length > 0) {
             // 开始查询
             this.setState({general_querying: true});
-            this.setState({init: true});
+
             // mock 数据查询, 最终查询到结果, 其形式为 {phonenumberArray, total}
-
-            queryPhoneNumberAndTotal({"phoneNumber": this.state.phoneNum, "currPage": 1, "pageSize": 10}, true).then(
-                ({phoneNumberList, total}) => {
-                    this.setState({general_querying: false});
-                    if(total <= 0) {
-                        Toast.info("未查询到符合该条件靓号");
-                    } else {
-                        // onResultChange的入参为查询结果,
-                        // 查询参数对象 : (非generalQuery: false),
-                        // {generalQuery, phoneNumber, headThree, bodyFour, tailFour, tailReg, currPage, pageSize}
-                        const thisQueryParams = {
-                            phoneNumber: this.state.phoneNum,
-                            headThree: null,
-                            bodyFour: null,
-                            tailFour: null,
-                            tailReg: null,
-                            currPage: 1,
-                            pageSize: 10,
-                            totalPages: Math.ceil(total / 10)
-                        };
-
-                        this.props.onResultChange(phoneNumberList, thisQueryParams, true);
-                        this.props.history.push('/show_result');
-                        this.props.onShowNavBar(false);
-                    }
-
-                }).catch(
-                        err => {
-                            console.log(err.message);
-                            Toast.info(err.message);
-                            this.setState({general_querying: false});
-                        }
-                    );
+            this.queryPhoneNumberAndTotalFun({"phoneNumber": this.state.phoneNumber, "currPage": 1, "pageSize": 10}, true);
 
         } else {
             // toast 提示
             this.setState({general_querying: false});
             Toast.info('号码输入不能为空!');
+        }
+    }
+
+    // 高级查询事件
+    advancedQueryHandler() {
+        console.log("advanced query start...");
+        if (this.state.bodyFour
+            || (this.state.headThree && this.state.headThree.length > 0)
+            || this.state.tailFour
+            || (this.state.tailReg && this.state.tailReg.length > 0))
+        {
+            this.setState({advanced_querying: true});
+            const headThree = (this.state.headThree && this.state.headThree.length > 0) ? this.state.headThree[0] : null;
+            const tailReg = (this.state.tailReg && this.state.tailReg.length > 0) ? this.state.tailReg[0] : null;
+            this.queryPhoneNumberAndTotalFun(
+                {
+                    "phoneNumber": this.state.phoneNumber,
+                    "currPage": 1,
+                    "pageSize": 10,
+                    "headThree": headThree,
+                    "tailReg": tailReg,
+                    "bodyFour": this.state.bodyFour,
+                    "tailFour": this.state.tailFour
+                }, false);
+        }
+        else {
+            Toast.info('输入信息为空!')
         }
     }
 
@@ -128,8 +173,8 @@ class BasicQueryForm extends React.Component {
                         type="money"
                         maxLength={11}
                         disabled={this.state.general_querying}
-                        value={this.state.phoneNum}
-                        onChange={(phoneNum) => this.setState({phoneNum})}
+                        value={this.state.phoneNumber}
+                        onChange={(phoneNumber) => this.setState({phoneNumber})}
                         extra={
                             <div className="general_query_div">
                                 <div><Icon type={this.state.general_querying ? "loading" : "search"} /></div>
@@ -150,18 +195,25 @@ class BasicQueryForm extends React.Component {
                     </div>
                 }>
 
-                    <Picker data={prefix} cols={1} {...getFieldProps('prefixThree')} className="forss">
+                    <Picker
+                        data={headThree}
+                        cols={1}
+                        {...getFieldProps('headThree')}
+                        className="forss"
+                        value={this.state.headThree}
+                        onChange={(headThree)=>this.setState({headThree})}
+                    >
                         <List.Item arrow="horizontal">号首3位(可不选)</List.Item>
                     </Picker>
 
                     <InputItem
                         type="money"
                         maxLength={4}
-                        value={this.state.middle}
+                        value={this.state.bodyFour}
                         clear
                         placeholder="可不填"
                         focused={this.state.focused}
-                        onChange={(middle) => this.setState({middle})}
+                        onChange={(bodyFour) => this.setState({bodyFour})}
                         onFocus={() => {
                             this.setState({
                                 focused: false,
@@ -173,11 +225,11 @@ class BasicQueryForm extends React.Component {
                     <InputItem
                         type="money"
                         maxLength={4}
-                        value={this.state.tail}
+                        value={this.state.tailFour}
                         clear
                         placeholder="可不填"
                         focused={this.state.focused}
-                        onChange={(tail) => this.setState({tail})}
+                        onChange={(tailFour) => this.setState({tailFour})}
                         onFocus={() => {
                             this.setState({
                                 focused: false,
@@ -186,7 +238,12 @@ class BasicQueryForm extends React.Component {
                     >后4位
                     </InputItem>
 
-                    <Picker data={flags} cols={1} {...getFieldProps('tailFlag')}>
+                    <Picker
+                        data={tailReg}
+                        cols={1} {...getFieldProps('tailReg')}
+                        value={this.state.tailReg}
+                        onChange={(tailReg)=>this.setState({tailReg})}
+                    >
                         <List.Item arrow="horizontal">选择靓号(如AAA)</List.Item>
                     </Picker>
                 </List>
@@ -195,10 +252,12 @@ class BasicQueryForm extends React.Component {
                 <Button
                     className="btn"
                     type="primary"
+                    onClick={this.advancedQueryHandler}
                     /*style={{height: '0.7rem'}}*/
                     disabled={this.state.advanced_querying}
                     icon={this.state.advanced_querying ? "loading" : "search"}>
                     {this.state.advanced_querying ? "正在查询..." : "查询"}
+
                 </Button>
             </div>
         );

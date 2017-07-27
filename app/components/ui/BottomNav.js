@@ -65,7 +65,7 @@ class BottomNav extends React.Component {
                         onPress={() => {
                             this.setState({
                                 selectedTab: 2,
-                            }, (e) => {e.preventDefault(); this.props.history.push('/favorites') });
+                            }, () => this.props.history.push('/favorites') );
                         }}
                     />
 
@@ -85,7 +85,8 @@ class BottomNav extends React.Component {
                         }
                         key="prev"
                         onPress={() => {
-                            this.props.onChangePageQuery(this.props.queryParams, false, this.props.generalQuery);
+                            if(!this.props.fetching && this.props.queryParams.currPage > 1)
+                                this.props.onChangePageQuery(this.props.queryParams, false, this.props.generalQuery);
                         }}
                     />
 
@@ -102,7 +103,8 @@ class BottomNav extends React.Component {
                         }
                         key="next"
                         onPress={() => {
-                            this.props.onChangePageQuery(this.props.queryParams, true, this.props.generalQuery);
+                            if(!this.props.fetching && this.props.queryParams.currPage != this.props.queryParams.totalPages)
+                                this.props.onChangePageQuery(this.props.queryParams, true, this.props.generalQuery);
                         }}
                     />
 

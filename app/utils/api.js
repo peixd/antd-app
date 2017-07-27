@@ -2,22 +2,22 @@ const axios = require('axios');
 // debug only...
 // window.axios = axios;
 
-// content-type from json to form data
-const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' } };
+// content-type from json to form data, config the timeout to 10 sec.
+const config = {
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' } ,
+    timeout: 10000
+};
 const URL = "http://134.70.103.102:8080/ssm/services";
 
 export const queryPhoneNumber = (params, isGeneralQuery=false) => {
     const queryParams = `service=phoneNumberQueryService&method=${isGeneralQuery ? "generalQuery" : "advancedQuery"}&params=${JSON.stringify(params)}`;
     return axios.post(URL, queryParams, config)
         .then(res => res.data)
-        .catch(err => err.message);
 }
 
 export const queryTotal = (params, isGeneralQuery=false) => {
     const queryParams = `service=phoneNumberQueryService&method=${isGeneralQuery ? "generalQueryTotal" : "advancedQueryTotal"}&params=${JSON.stringify(params)}`;
-    return (axios.post(URL, queryParams, config)
-        .then(res => res.data)
-        .catch(err => err.message));
+    return axios.post(URL, queryParams, config).then(res => res.data)
 }
 
 export const queryPhoneNumberAndTotal = (params, isGeneralQuery) => {

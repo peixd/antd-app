@@ -15,7 +15,7 @@ const consoleMessages = store => next => action => {
 
 	console.log(`
 	
-		"phoneNumber": ${queryParams.phoneNum}
+		"phoneNumber": ${queryParams.phoneNumber}
 		"headThree": ${queryParams.headThree}
 		"bodyFour": ${queryParams.bodyFour}
 		"tailFour": ${queryParams.tailFour}

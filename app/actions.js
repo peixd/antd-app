@@ -38,6 +38,17 @@ export function changeCurrPage(data) {
     }
 }
 
+export function cancelFetching() {
+    return {
+        type: C.CANCLE_FETCHING
+    }
+}
+
+export function fetching() {
+    return {
+        type: C.FETCHING
+    }
+}
 /*
 export const changeCurrPage = (queryParams, isAdvancedQuery) => dispatch => {
     dispatch({

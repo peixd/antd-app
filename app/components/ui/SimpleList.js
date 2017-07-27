@@ -13,7 +13,6 @@ const ReactRouter = require('react-router-dom');
 const Link = ReactRouter.Link;
 
 const SimpleList = ({result, onShowNavBar=f=>f}) => {
-    console.log()
     return (
         <div>
             <div className="top_nav_bar">

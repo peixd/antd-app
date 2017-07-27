@@ -47,13 +47,25 @@ export const generalQuery = (state=false, action) =>
     (action.type === C.GENERAL_QUERY) ?
         action.payload : state
 
+export const fetching = (state=false, action) => {
+    switch(action.type) {
+        case C.FETCHING:
+            return true;
+        case C.CANCLE_FETCHING:
+            return false;
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     favorites,
     total,
     result,
     showNavBar,
     queryParams,
-    generalQuery
+    generalQuery,
+    fetching
 })
 
 
