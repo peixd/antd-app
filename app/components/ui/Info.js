@@ -39,7 +39,7 @@ const Info = () => {
                                 <div>
                                     <ul>
                                         {
-                                            desc_not556.map(function(item, index) {
+                                            desc_not556.map(function (item, index) {
                                                 return (
                                                     <li key={index} className="info_list_header">
                                                         {item}
@@ -52,7 +52,7 @@ const Info = () => {
                             )}
                         >
                             {
-                                items_not556.map(function(item, index) {
+                                items_not556.map(function (item, index) {
                                     return (
                                         <Item
                                             key={index}
@@ -65,25 +65,28 @@ const Info = () => {
                                                         <div>靓号等级 <span className="level">{item.level}</span></div>
                                                     </div>
                                                     <div className="right_info">
-                                                        <div>套餐 <span className="ofr_charge">{item.ofr_charge}</span></div>
+                                                        <div>套餐 <span className="ofr_charge">{item.ofr_charge}</span>
+                                                        </div>
                                                     </div>
                                                     {
-                                                        item.details ? <Icon className="icon_more_info" type={require('../../svgs/more-info.svg')}/> : <div style={{width:'0.44rem'}}/>
+                                                        item.details ? <Icon className="icon_more_info"
+                                                                             type={require('../../svgs/more-info.svg')}/> :
+                                                            <div style={{width: '0.44rem'}}/>
                                                     }
                                                 </div>
-
 
 
                                                 <div className="number_tail_div">
 
                                                     <div>尾数
-                                                    {
-                                                        item.tail_desc.map(function(value, index) {
-                                                            return (
-                                                                <span key={index} className="number_tail">{value}</span>
-                                                            );
-                                                        })
-                                                    }
+                                                        {
+                                                            item.tail_desc.map(function (value, index) {
+                                                                return (
+                                                                    <span key={index}
+                                                                          className="number_tail">{value}</span>
+                                                                );
+                                                            })
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>
