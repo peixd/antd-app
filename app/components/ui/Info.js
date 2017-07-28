@@ -22,8 +22,6 @@ const TabPane = Tabs.TabPane;
 const Item = List.Item;
 
 const Info = () => {
-    console.log("policy_556", policy_556.desc);
-    console.log("policy_556", policy_not_556.desc);
     return (
         <div>
             <div className="top_nav_bar">
@@ -57,42 +55,6 @@ const Info = () => {
                                     return (
                                         <Item key={index} >
                                             <InfoItemNot556 item={item} />
-                                            {/*<div className="main_container_info">
-                                                <div className="info_item_container">
-                                                    <div className="left_level">
-                                                        <div>靓号等级 <span className="level">{item.level}</span></div>
-                                                    </div>
-                                                    <div className="right_info">
-                                                        <div>套餐 <span className="ofr_charge">{item.ofr_charge}</span>
-                                                        </div>
-                                                    </div>
-                                                    {
-                                                        item.details ?
-                                                            <Icon
-                                                                onClick={() => console.log('clicked.', index)}
-                                                                 className="icon_more_info"
-                                                                 type={require('../../svgs/more-info.svg')}/> :
-                                                            <div style={{width: '0.44rem'}}/>
-                                                    }
-                                                </div>
-
-                                                <div className="number_tail_div">
-
-                                                    <div>尾数
-                                                        {
-                                                            item.tail_desc.map(function (value, index) {
-                                                                return (
-                                                                    <span key={index}
-                                                                          className="number_tail">{value}</span>
-                                                                );
-                                                            })
-                                                        }
-                                                    </div>
-                                                </div>
-                                                {
-                                                    item.details && <div>{item.details}</div>
-                                                }
-                                            </div>*/}
                                         </Item>
                                     );
                                 })

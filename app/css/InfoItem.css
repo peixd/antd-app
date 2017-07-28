@@ -12,14 +12,13 @@
 
 .number_tail {
     padding-left: 0.1rem;
-    font-size: 0.3rem;
-    color: black;
+    font-size: 0.32rem;
     font-weight: normal;
 }
 
 .level, .ofr_charge{
-    font-size: 0.4rem;
-    font-weight: bold;
+    font-size: 0.42rem;
+    color: dimgray;
 }
 
 .icon_more_info {
@@ -29,12 +28,12 @@
 .tab_pane {
     font-size: 0.3rem;
     font-weight: bold;
+    color: dimgray;
 }
 
 .info_list_header {
     margin-left: 0;
     padding-left: 0.4rem;
-    color: black;
 }
 
 .info_list_header li {
@@ -43,15 +42,14 @@
 
 .main_container_info {
     font-size: 0.25rem;
-    color: black;
     margin: 0;
     padding: 0;
+    color: dimgrey;
 }
 
 .more_info {
     width: 100%;
     word-break: break-all;
-
 }
 
 .more_info_div {

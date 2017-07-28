@@ -34,7 +34,9 @@ const tailReg = [
     {label:'ABC', value: 'ABC'},
     {label:'AAAA', value: 'AAAA'},
     {label:'ABCD', value: 'ABCD'},
+    {label:'ABCDE', value: 'ABCDE'},
     {label:'ABBA', value: 'ABBA'},
+    {label:'ABAB', value: 'ABAB'},
     {label:'AAAAA', value: 'AAAAA'},
 ];
 
