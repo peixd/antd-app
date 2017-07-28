@@ -13,7 +13,7 @@ const Brief = Item.Brief;
 const ReactRouter = require('react-router-dom');
 const Link = ReactRouter.Link;
 
-const SimpleList = ({result, onShowNavBar=f=>f}) => {
+const SimpleList = ({result, history, onShowNavBar=f=>f, onAddFav=f=>f}) => {
     return (
         <div>
             <div className="top_nav_bar">
@@ -21,6 +21,16 @@ const SimpleList = ({result, onShowNavBar=f=>f}) => {
                         iconName="false"
                         leftContent={
                             <Link to="/"><Icon type="search"/></Link>
+                        }
+                        rightContent={
+                            <Link to="/favorites">
+                                <Icon
+                                    onClick={ (e)=> {
+                                        e.preventDefault();
+                                        onShowNavBar(true);
+                                        history.push('/favorites');
+                                    }}
+                                    type={require('../../svgs/star-o.svg')}/></Link>
                         }
                         onLeftClick={ ((e) => {e.preventDefault(); onShowNavBar(true) }) }
                 >靓号清单
@@ -32,13 +42,19 @@ const SimpleList = ({result, onShowNavBar=f=>f}) => {
                     {
                         result.map(function(item, index){
                             return (
-                                <Item key={index}>
-                                    <PhoneItem item={item}/>
-                                    <Icon
+                                <Item
+                                    key={index}
+                                    extra={<Icon
                                         size="small"
-                                        style={{color:'yellow', alignSelf: 'center'}}
+                                        style={{ color: 'yellow', alignSelf: 'flex-end' }}
                                         type={require('../../svgs/star-o.svg')}
-                                        onClick={ () => console.log(item) }/>
+                                        onClick={ (e) => {
+                                            e.preventDefault();
+                                            const newItem = item;
+                                            newItem.date = new Date();
+                                            onAddFav(newItem)} } />}
+                                >
+                                    <PhoneItem item={item} showStart={true}/>
                                 </Item>);
                         })
                     }

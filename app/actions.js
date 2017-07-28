@@ -31,6 +31,20 @@ export function showNavBar(data) {
     }
 }
 
+export function addFav(data) {
+    return {
+        type: C.ADD_FAV,
+        payload: data
+    }
+}
+
+export function removeFav(data) {
+    return {
+        type: C.REMOVE_FAV,
+        payload: data
+    }
+}
+
 export function changeCurrPage(data) {
     return {
         type: C.CHANGE_CURR_PAGE,

@@ -12,6 +12,11 @@ const mapDispatchToProps = dispatch => ({
         dispatch(
             showNavBar(data)
         )
+    },
+    onAddFav(data) {
+        dispatch(
+            addFav(data)
+        )
     }
 })
 

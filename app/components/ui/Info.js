@@ -8,7 +8,6 @@ import 'antd-mobile/lib/nav-bar/style/css';
 import '../../css/Info.css';
 import policy_556 from '../../model/policy_for_0556.json';
 import policy_not_556 from '../../model/policy_for_not_0556.json';
-import Icon from "antd-mobile/lib/icon";
 import "antd-mobile/lib/icon/style/css";
 import InfoItemNot556 from './InfoItemNot556';
 import InfoItem556 from './InfoItem556';

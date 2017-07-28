@@ -11,6 +11,7 @@ const mapStateToProps = (state, props) => ({
     queryParams: state.queryParams,
     generalQuery: state.generalQuery,
     fetching: state.fetching,
+    favorites: state.favorites,
 })
 
 const mapDispatchToProps = dispatch => ({

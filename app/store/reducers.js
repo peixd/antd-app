@@ -4,6 +4,8 @@ import C from '../constants'
 export const favorites = (state=[], action) => {
   switch(action.type) {
     case C.ADD_FAV :
+        // 如果已有记录先删除
+        const newState = state.filter((item, index) => item.PHONE_NUMBER != action.payload.PHONE_NUMBER)
     	return [
          ...state,
          action.payload

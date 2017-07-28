@@ -21,7 +21,7 @@
 }
 .phone_number_item_container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 0.25em;
     color: dimgrey;
 }
@@ -49,4 +49,8 @@
     margin-top: 0.9rem;
     width: 100%;
     padding: 0;
+}
+
+.phone_list_container .am-list .am-list-body .am-list-item .am-list-line .am-list-extra {
+    flex-basis: 10%;
 }

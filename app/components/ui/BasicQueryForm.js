@@ -105,11 +105,9 @@ class BasicQueryForm extends React.Component {
                 err => {
                     console.log(err.message);
                     Toast.fail(err.message);
-                    this.setState( function(generalQuery) {
-                        if(generalQuery)
-                            return ({general_querying: false})
-                        else
-                            return ({advanced_querying: false})
+                    this.setState( {
+                        general_querying: false,
+                        advanced_querying: false
                     });
                 });
     }
