@@ -1,0 +1,63 @@
+.info_item_container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.number_tail_div {
+    /*display: flex;
+    flex-flow: row wrap;*/
+}
+
+.number_tail {
+    padding-left: 0.1rem;
+    font-size: 0.3rem;
+    color: black;
+    font-weight: normal;
+}
+
+.level, .ofr_charge{
+    font-size: 0.4rem;
+    font-weight: bold;
+}
+
+.icon_more_info {
+    align-self: flex-end;
+}
+
+.tab_pane {
+    font-size: 0.3rem;
+    font-weight: bold;
+}
+
+.info_list_header {
+    margin-left: 0;
+    padding-left: 0.4rem;
+    color: black;
+}
+
+.info_list_header li {
+    margin-top: 0.1rem;
+}
+
+.main_container_info {
+    font-size: 0.25rem;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.more_info {
+    width: 100%;
+    word-break: break-all;
+
+}
+
+.more_info_div {
+    width: 100%;
+    display: block;
+    word-wrap: break-word;
+    word-break: normal;
+    white-space: normal;
+}

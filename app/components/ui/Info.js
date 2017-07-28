@@ -1,4 +1,3 @@
-import React from 'react';
 import NavBar from 'antd-mobile/lib/nav-bar';
 import Tabs from 'antd-mobile/lib/tabs';
 import 'antd-mobile/lib/tabs/style/css';
@@ -11,6 +10,9 @@ import policy_556 from '../../model/policy_for_0556.json';
 import policy_not_556 from '../../model/policy_for_not_0556.json';
 import Icon from "antd-mobile/lib/icon";
 import "antd-mobile/lib/icon/style/css";
+import InfoItemNot556 from './InfoItemNot556';
+import InfoItem556 from './InfoItem556';
+
 const desc556 = policy_556.desc;
 const items556 = policy_556.items;
 const desc_not556 = policy_not_556.desc;
@@ -33,15 +35,14 @@ const Info = () => {
             <div className="info_container">
                 <Tabs defaultActiveKey="1">
                     <TabPane tab={<div className="tab_pane">非0556号段</div>} key="1">
-
                         <List
                             renderHeader={() => (
-                                <div>
-                                    <ul>
+                                <div className="header_div">
+                                    <ul className="info_list_header">
                                         {
                                             desc_not556.map(function (item, index) {
                                                 return (
-                                                    <li key={index} className="info_list_header">
+                                                    <li key={index}>
                                                         {item}
                                                     </li>
                                                 );
@@ -54,12 +55,9 @@ const Info = () => {
                             {
                                 items_not556.map(function (item, index) {
                                     return (
-                                        <Item
-                                            key={index}
-
-                                        >
-                                            <div className="main_container_info">
-
+                                        <Item key={index} >
+                                            <InfoItemNot556 item={item} />
+                                            {/*<div className="main_container_info">
                                                 <div className="info_item_container">
                                                     <div className="left_level">
                                                         <div>靓号等级 <span className="level">{item.level}</span></div>
@@ -69,12 +67,14 @@ const Info = () => {
                                                         </div>
                                                     </div>
                                                     {
-                                                        item.details ? <Icon className="icon_more_info"
-                                                                             type={require('../../svgs/more-info.svg')}/> :
+                                                        item.details ?
+                                                            <Icon
+                                                                onClick={() => console.log('clicked.', index)}
+                                                                 className="icon_more_info"
+                                                                 type={require('../../svgs/more-info.svg')}/> :
                                                             <div style={{width: '0.44rem'}}/>
                                                     }
                                                 </div>
-
 
                                                 <div className="number_tail_div">
 
@@ -89,20 +89,46 @@ const Info = () => {
                                                         }
                                                     </div>
                                                 </div>
-                                            </div>
-
+                                                {
+                                                    item.details && <div>{item.details}</div>
+                                                }
+                                            </div>*/}
                                         </Item>
                                     );
                                 })
                             }
 
-
                         </List>
                     </TabPane>
                     <TabPane tab={<div className="tab_pane">0556号段</div>} key="2">
-                        <div>
-                            Content of Second Tab
-                        </div>
+                        <List
+                            renderHeader={() => (
+                                <div className="header_div">
+                                    <ul className="info_list_header">
+                                        {
+                                            desc556.map(function (item, index) {
+                                                return (
+                                                    <li key={index}>
+                                                        {item}
+                                                    </li>
+                                                );
+                                            })
+                                        }
+                                    </ul>
+                                </div>
+                            )}
+                        >
+                            {
+                                items556.map(function (item, index) {
+                                    return (
+                                        <Item key={index}>
+                                            <InfoItem556 item={item} />
+                                        </Item>
+                                    );
+                                })
+                            }
+
+                        </List>
                     </TabPane>
                 </Tabs>
             </div>
