@@ -73,11 +73,9 @@ class BasicQueryForm extends React.Component {
     queryPhoneNumberAndTotalFun(queryParams, generalQuery) {
         return queryPhoneNumberAndTotal(queryParams, generalQuery).then(
             ({phoneNumberList, total}) => {
-                this.setState( function(generalQuery) {
-                    if(generalQuery)
-                        return ({general_querying: false})
-                    else
-                        return ({advanced_querying: false})
+                this.setState( {
+                    general_querying: false,
+                    advanced_querying: false
                 });
                 if(total <= 0) {
                     Toast.info("未查询到符合该条件靓号");

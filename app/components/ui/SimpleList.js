@@ -6,6 +6,7 @@ import NavBar from 'antd-mobile/lib/nav-bar';
 import 'antd-mobile/lib/nav-bar/style/css';
 import Icon from 'antd-mobile/lib/icon';
 import 'antd-mobile/lib/icon/style/css';
+import PhoneItem from './PhoneItem';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -32,20 +33,12 @@ const SimpleList = ({result, onShowNavBar=f=>f}) => {
                         result.map(function(item, index){
                             return (
                                 <Item key={index}>
-                                    <div className='phone_number_item_container'>
-                                        <div className='phone_number_info_item'>
-                                            <div className='phone_number'>{item.PHONE_NUMBER}</div>
-                                            <div className='phone_number_details'>
-                                                <div>状态: {item.STATUS_NAME}</div>
-                                                <div>号池: {item.NAME}</div>
-                                                <div>等级/原等级: {item.PN_LEVEL_ID}/{item.PRE_PN_LEVEL_ID}</div>
-                                            </div>
-                                        </div>
-                                        <div className='phone_number_price_details'>
-                                            <div>保底:<span className='font_style'>{item.REAL_PN_LOW_PRICE}</span>元</div>
-                                            <div>预存:<span className='font_style'>{item.REAL_PRE_STORE_PRICE}</span>元</div>
-                                        </div>
-                                    </div>
+                                    <PhoneItem item={item}/>
+                                    <Icon
+                                        size="small"
+                                        style={{color:'yellow', alignSelf: 'center'}}
+                                        type={require('../../svgs/star-o.svg')}
+                                        onClick={ () => console.log(item) }/>
                                 </Item>);
                         })
                     }
