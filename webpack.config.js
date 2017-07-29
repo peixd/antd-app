@@ -19,7 +19,7 @@ var config = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index_bundle.js',
-        publicPath: '/dist'
+        publicPath: '/assets/'
     },
     resolve: {
         modules: [path.resolve(__dirname, 'node_modules'), path.join(__dirname, 'app')],

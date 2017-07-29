@@ -9,8 +9,8 @@ import './css/App.css';
 import BottomNav from './components/containers/BottomNav';
 
 const ReactRouter = require('react-router-dom');
-const Router = ReactRouter.BrowserRouter;
-/*const Router = ReactRouter.HashRouter;*/
+/*const Router = ReactRouter.BrowserRouter;*/
+const Router = ReactRouter.HashRouter;
 const Route = ReactRouter.Route;
 const Switch = ReactRouter.Switch;
 const WithRouter = ReactRouter.withRouter;
