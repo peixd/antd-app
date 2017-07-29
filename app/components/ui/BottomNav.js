@@ -8,20 +8,20 @@ class BottomNav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 1,
             hidden: false,
         };
     }
 
     render() {
-        const {showNavBar, history, fetching, queryParams, generalQuery, onChangeQuery, favorites} = this.props;
+        const {showNavBar, history, fetching, queryParams, generalQuery, favorites, newUrl} = this.props;
+        console.log("props...", this.props);
         return (
             <div className="nav-container">
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
                     barTintColor="white"
-                    hidden={!this.props.showNavBar}
+                    hidden={!showNavBar}
                 >
 
                     <TabBar.Item
@@ -30,12 +30,12 @@ class BottomNav extends React.Component {
                         title="政策"
                         key="政策"
                         dot
-                        selected={this.state.selectedTab === 0}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 0,
-                            }, () => history.push('/info'));
-                        }}
+                        selected={ newUrl === '/info' ? true : false }
+                        onPress={ () => {
+                                this.props.onChangeUrl('/info');
+                                history.push('/info');
+                            }
+                        }
                     />
 
                     <TabBar.Item
@@ -43,13 +43,12 @@ class BottomNav extends React.Component {
                         selectedIcon={<Icon type={require('../../svgs/search.svg')} />}
                         title="查询"
                         key="查询"
-                        selected={this.state.selectedTab === 1}
-                        onPress={() => {
-
-                            this.setState({
-                                selectedTab: 1,
-                            }, () => history.push('/'));
-                        }}
+                        selected={newUrl === '/' ? true : false}
+                        onPress={ () => {
+                            this.props.onChangeUrl('/');
+                                history.push('/');
+                            }
+                        }
                         data-seed="logId1"
                     />
 
@@ -58,13 +57,13 @@ class BottomNav extends React.Component {
                         selectedIcon={<Icon type={require('../../svgs/star.svg')} />}
                         title="收藏"
                         key="收藏"
-                        badge={favorites.length}
-                        selected={this.state.selectedTab === 2}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 2,
-                            }, () => history.push('/favorites') );
-                        }}
+                        badge={favorites.length === 5 ? '满' : favorites.length}
+                        selected={ newUrl === '/favorites' ? true : false }
+                        onPress={ () => {
+                            this.props.onChangeUrl('/favorites');
+                                history.push('/favorites');
+                            }
+                        }
                     />
 
                 </TabBar>
@@ -84,7 +83,7 @@ class BottomNav extends React.Component {
                         key="prev"
                         onPress={() => {
                             if(!fetching && queryParams.currPage > 1)
-                                onChangePageQuery(queryParams, false, generalQuery);
+                                this.props.onChangePageQuery(queryParams, false, generalQuery);
                         }}
                     />
 
@@ -102,7 +101,7 @@ class BottomNav extends React.Component {
                         key="next"
                         onPress={() => {
                             if(!fetching && queryParams.currPage != queryParams.totalPages)
-                                onChangePageQuery(queryParams, true, generalQuery);
+                                this.props.onChangePageQuery(queryParams, true, generalQuery);
                         }}
                     />
 

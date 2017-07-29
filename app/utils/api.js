@@ -7,7 +7,7 @@ const config = {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' } ,
     timeout: 10000
 };
-const URL = "http://134.70.103.102:8080/ssm/services";
+const URL = "http://218.22.140.154:99/ssm/services";
 
 export const queryPhoneNumber = (params, isGeneralQuery=false) => {
     const queryParams = `service=phoneNumberQueryService&method=${isGeneralQuery ? "generalQuery" : "advancedQuery"}&params=${JSON.stringify(params)}`;

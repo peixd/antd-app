@@ -10,6 +10,13 @@ export function changeResult(data) {
     }
 }
 
+export function changeUrl(data) {
+    return {
+        type: C.CHANGE_URL,
+        payload: data
+    }
+}
+
 export function changeQueryParams(data) {
     return {
         type: C.CHANGE_QUERY_PARAMS,

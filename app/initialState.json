@@ -1,11 +1,10 @@
 {
-	"hasPhoneNumbers": false,
-	"messages": [],
 	"total": 0,
 	"result": [],
 	"favorites": [],
 	"showNavBar": true,
 	"generalQuery": false,
+	"newUrl": "/",
 	"queryParams": {
 		"phoneNumber": null,
 		"headThree": null,
