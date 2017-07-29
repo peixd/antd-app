@@ -10,7 +10,7 @@ const PhoneItem = (props) => {
             <div className='phone_number_item_container'>
                 <div className='phone_number_info_item'>
                     <div className='phone_number'>{PHONE_NUMBER}
-                        {date && <span style={{paddingLeft: '0.1rem', fontSize: '0.1rem', fontWeight: 'normal'}}>{date}</span>}
+                        {date && <span style={{paddingLeft: '0.1rem', fontSize: '0.2rem', fontWeight: 'normal'}}>{date}</span>}
                     </div>
                     <div className='phone_number_details'>
                         <div>状态: {STATUS_NAME}</div>

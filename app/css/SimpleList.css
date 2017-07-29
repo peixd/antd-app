@@ -22,7 +22,7 @@
 .phone_number_item_container {
     display: flex;
     justify-content: space-between;
-    font-size: 0.25em;
+    font-size: 0.25rem;
     color: dimgrey;
 }
 .phone_number_details {

@@ -30,7 +30,7 @@ const Info = () => {
                 </NavBar>
             </div>
             <div className="info_container">
-                <Tabs defaultActiveKey="1">
+                <Tabs defaultActiveKey="1" animated={false} swipeable={false}>
                     <TabPane tab={<div className="tab_pane">非0556号段</div>} key="1">
                         <List
                             renderHeader={() => (
