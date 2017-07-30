@@ -1,3 +1,4 @@
+import React from 'react';
 import 'antd-mobile/lib/icon/style/css';
 import '../../css/SimpleList.css';
 
@@ -5,7 +6,6 @@ const PhoneItem = (props) => {
     const {NAME, PHONE_NUMBER, PN_LEVEL_ID, PRE_PN_LEVEL_ID, REAL_PN_LOW_PRICE, REAL_PRE_STORE_PRICE, STATUS_NAME, date }
         = props.item;
     return (
-
             <div className='phone_number_item_container'>
                 <div className='phone_number_info_item'>
                     <div className='phone_number'>{PHONE_NUMBER}
