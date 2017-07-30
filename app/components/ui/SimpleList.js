@@ -31,7 +31,7 @@ const SimpleList = ({result, history, favorites, onShowNavBar=f=>f, onAddFav=f=>
                                     onChangeUrl('/');
                                     history.push('/');
                                 }}
-                                type={require('../../svgs/search-o.svg')}/>
+                                type="search-o-d"/>
                         }
                         rightContent={
                             <Icon
@@ -41,7 +41,7 @@ const SimpleList = ({result, history, favorites, onShowNavBar=f=>f, onAddFav=f=>
                                     onChangeUrl('/favorites');
                                     history.push('/favorites');
                                 }}
-                                type={require('../../svgs/star-o.svg')}/>
+                                type="star-o-d"/>
                         }
                         onLeftClick={ ((e) => {e.preventDefault(); onShowNavBar(true) }) }
                 >靓号清单
@@ -58,7 +58,7 @@ const SimpleList = ({result, history, favorites, onShowNavBar=f=>f, onAddFav=f=>
                                     extra={<Icon
                                         size="small"
                                         style={{ color: 'yellow', alignSelf: 'flex-end' }}
-                                        type={require('../../svgs/star-o.svg')}
+                                        type="star-o-d"
                                         onClick={ (e) => {
                                             e.preventDefault();
                                             if(favorites.length === MAX)
