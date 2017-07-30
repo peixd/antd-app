@@ -23,7 +23,6 @@ const mapDispatchToProps = dispatch => ({
     onChangePageQuery(queryParams, nextPage, generalQuery) {
         const currPage = nextPage ? queryParams.currPage  + 1 : queryParams.currPage - 1;
         const thisQueryParams = Object.assign({}, queryParams, {currPage});
-        console.log("thisQueryParams", thisQueryParams);
         Toast.loading('查询中...', 10);
         dispatch(
             fetching()

@@ -9,7 +9,7 @@ import PhoneItem from './PhoneItem';
 
 const Item = List.Item;
 
-const Favorites = ({favorites}) => {
+const Favorites = ({favorites, onRemoveFav=f=>f}) => {
     return (
         <div>
             <div className="top_nav_bar">
@@ -35,7 +35,7 @@ const Favorites = ({favorites}) => {
                                         },
                                         {
                                             text: '删除',
-                                            onPress: () => props.onRemoveFav(index),
+                                            onPress: () => onRemoveFav(index),
                                             style: { backgroundColor: '#F4333C', color: 'white' },
                                         },
                                     ]}

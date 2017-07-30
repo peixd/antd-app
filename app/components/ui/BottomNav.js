@@ -27,10 +27,7 @@ class BottomNav extends React.Component {
                         key="政策"
                         dot
                         selected={ pathname === '/info' ? true : false }
-                        onPress={ () => {
-                                history.push('/info');
-                            }
-                        }
+                        onPress={ () => history.push('/info') }
                     />
 
                     <TabBar.Item

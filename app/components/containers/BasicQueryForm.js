@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import BasicQueryForm from '../ui/BasicQueryForm';
-import {changeResult, showNavBar, changeQueryParams, changeGeneralQuery} from '../../actions';
+import {changeResult, changeQueryParams, changeGeneralQuery} from '../../actions';
 
 const mapStateToProps = (state, props) => ({
     queryParams: state.queryParams,
@@ -8,7 +8,6 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
     onResultChange(data, queryParams, generalQuery) {
         dispatch(
             changeResult(data)
@@ -19,14 +18,7 @@ const mapDispatchToProps = dispatch => ({
         dispatch(
             changeGeneralQuery(generalQuery)
         )
-    },
-
-    onShowNavBar(data) {
-        dispatch(
-            showNavBar(data)
-        )
     }
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasicQueryForm);

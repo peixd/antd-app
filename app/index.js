@@ -1,30 +1,23 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Routes = require('./Routes');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const Routes = require('./Routes');
 
-// redux
-import C from './constants';
-import storeFactory from './store';
-import { Provider } from 'react-redux';
-//import { addError } from './actions'
-import sampleData from './initialState';
+const Provider = require('react-redux');
+const initialState = require('./initialState');
 
-const data = require('./model/data_mocked');
+if(localStorage["favorites"])
+    initialState.favorites = JSON.parse(localStorage["favorites"]);
 
-const initialState = sampleData;
-
-if(localStorage["redux-store"])
-    initialState.favorites = JSON.parse(localStorage["redux-store"]).favorites;
-
-const saveState = () =>
-    localStorage["redux-store"] = JSON.stringify(store.getState());
-
+const storeFactory = require('./store');
 const store = storeFactory(initialState);
 store.subscribe(saveState);
 
+const saveState = () =>
+    localStorage["favorites"] = JSON.stringify(store.getState().favorites);
+
 //debug only
-window.React = React;
-window.store = store;
+/*window.React = React;
+window.store = store;*/
 
 ReactDOM.render(
     <Provider store={store}>

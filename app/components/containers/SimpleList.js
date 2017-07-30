@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SimpleList from '../ui/SimpleList';
-import {addFav, removeFav } from '../../actions';
+import { addFav } from '../../actions';
 
 const mapStateToProps = (state, props) => ({
     result: state.result,

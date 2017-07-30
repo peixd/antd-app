@@ -240,7 +240,6 @@ class BasicQueryForm extends React.Component {
                     disabled={this.state.advanced_querying}
                     icon={this.state.advanced_querying ? "loading" : "search"}>
                     {this.state.advanced_querying ? "正在查询..." : "查询"}
-
                 </Button>
             </div>
         );
