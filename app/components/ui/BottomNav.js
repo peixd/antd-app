@@ -1,19 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types'
 import TabBar from 'antd-mobile/lib/tab-bar';
 import Icon from 'antd-mobile/lib/icon';
 
 class BottomNav extends React.Component {
-
     constructor(props) {
         super(props);
     }
 
     render() {
         const {history, fetching, queryParams, generalQuery, favorites} = this.props;
-        if(this.props.location) {
-            const pathname = this.props.location.pathname;
-        }
+        const pathname = this.props.location ? this.props.location.pathname : '/';
+
         return (
             <div className="nav-container">
                 <TabBar
@@ -81,7 +78,6 @@ class BottomNav extends React.Component {
                         icon={<div>{queryParams.currPage}/{queryParams.totalPages}</div>}
                         key="page"
                     />
-
 
                     <TabBar.Item
                         icon={

@@ -18,16 +18,9 @@ import 'antd-mobile/lib/toast/style/css';
 
 import NavBar from 'antd-mobile/lib/nav-bar';
 import 'antd-mobile/lib/nav-bar/style/css';
-import C from '../../constants';
-
 
 const api = require('../../utils/api');
-const queryPhoneNumber = api.queryPhoneNumber;
 const queryPhoneNumberAndTotal = api.queryPhoneNumberAndTotal;
-
-const ReactRouter = require('react-router-dom');
-const Link = ReactRouter.Link;
-
 const tailReg = [
     {label:'AA', value: 'AA'},
     {label:'AAA', value: 'AAA'},
@@ -51,10 +44,8 @@ const headThree = [
 ];
 
 class BasicQueryForm extends React.Component {
-
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {
             bodyFour: null,
             headThree: [],
@@ -97,13 +88,11 @@ class BasicQueryForm extends React.Component {
                     };
 
                     this.props.onResultChange(phoneNumberList, thisQueryParams, generalQuery);
-                    this.props.history.replace('/show_result');
-                    this.props.onShowNavBar(false);
+                    this.props.history.push('/show_result');
                 }
 
             }).catch(
                 err => {
-                    console.log(err.message);
                     Toast.fail(err.message);
                     this.setState( {
                         general_querying: false,
@@ -117,10 +106,8 @@ class BasicQueryForm extends React.Component {
         if(this.state.phoneNumber && this.state.phoneNumber.length > 0) {
             // 开始查询
             this.setState({general_querying: true});
-
             // mock 数据查询, 最终查询到结果, 其形式为 {phonenumberArray, total}
             this.queryPhoneNumberAndTotalFun({"phoneNumber": this.state.phoneNumber, "currPage": 1, "pageSize": 10}, true);
-
         } else {
             // toast 提示
             this.setState({general_querying: false});
@@ -130,7 +117,6 @@ class BasicQueryForm extends React.Component {
 
     // 高级查询事件
     advancedQueryHandler() {
-        console.log("advanced query start...");
         if (this.state.bodyFour
             || (this.state.headThree && this.state.headThree.length > 0)
             || this.state.tailFour
@@ -251,7 +237,6 @@ class BasicQueryForm extends React.Component {
                     className="btn"
                     type="primary"
                     onClick={this.advancedQueryHandler}
-                    /*style={{height: '0.7rem'}}*/
                     disabled={this.state.advanced_querying}
                     icon={this.state.advanced_querying ? "loading" : "search"}>
                     {this.state.advanced_querying ? "正在查询..." : "查询"}
