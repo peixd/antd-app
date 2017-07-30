@@ -1,14 +1,16 @@
-import NavBar from 'antd-mobile/lib/nav-bar';
-import Tabs from 'antd-mobile/lib/tabs';
-import 'antd-mobile/lib/tabs/style/css';
-import List from 'antd-mobile/lib/list';
-import 'antd-mobile/lib/list/style/css';
-
 import 'antd-mobile/lib/nav-bar/style/css';
+import NavBar from 'antd-mobile/lib/nav-bar';
+
+import 'antd-mobile/lib/tabs/style/css';
+import Tabs from 'antd-mobile/lib/tabs';
+
+import 'antd-mobile/lib/list/style/css';
+import List from 'antd-mobile/lib/list';
+
 import '../../css/Info.css';
-import policy_556 from '../../model/policy_for_0556.json';
-import policy_not_556 from '../../model/policy_for_not_0556.json';
-import "antd-mobile/lib/icon/style/css";
+import policy_556 from '../../model/policy_for_0556';
+import policy_not_556 from '../../model/policy_for_not_0556';
+
 import InfoItemNot556 from './InfoItemNot556';
 import InfoItem556 from './InfoItem556';
 
