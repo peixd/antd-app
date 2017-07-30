@@ -1,14 +1,19 @@
 import React from 'react';
-import List from 'antd-mobile/lib/list';
+
+/*import List from 'antd-mobile/lib/list';
 import 'antd-mobile/lib/list/style/css';
-import '../../css/SimpleList.css';
+
 import NavBar from 'antd-mobile/lib/nav-bar';
 import 'antd-mobile/lib/nav-bar/style/css';
 import Toast from 'antd-mobile/lib/toast';
 import 'antd-mobile/lib/toast/style/css';
 import Icon from 'antd-mobile/lib/icon';
-import 'antd-mobile/lib/icon/style/css';
+import 'antd-mobile/lib/icon/style/css';*/
+
+import {Icon, NavBar, Toast, List} from 'antd-mobile';
+
 import PhoneItem from './PhoneItem';
+import '../../css/SimpleList.css';
 
 const Item = List.Item;
 const Brief = Item.Brief;

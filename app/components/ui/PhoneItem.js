@@ -1,5 +1,4 @@
 import React from 'react';
-import 'antd-mobile/lib/icon/style/css';
 import '../../css/SimpleList.css';
 
 const PhoneItem = (props) => {

@@ -1,6 +1,8 @@
 import React from 'react';
-import TabBar from 'antd-mobile/lib/tab-bar';
-import Icon from 'antd-mobile/lib/icon';
+/*import TabBar from 'antd-mobile/lib/tab-bar';*/
+/*import Icon from 'antd-mobile/lib/icon';
+import 'antd-mobile/lib/icon/style/css';*/
+import {Icon, TabBar} from 'antd-mobile';
 
 class BottomNav extends React.Component {
     constructor(props) {

@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var pxtorem = require('postcss-pxtorem');
+var BabelPluginImport = require('babel-plugin-import');
 
 var postcssOpts = {
     ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
@@ -32,7 +33,13 @@ var config = {
                 test: /\.(jsx?)$/,
                 include: [path.resolve(__dirname, "app")],
                 exclude: [path.resolve(__dirname, "node_modules")],
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                query: {
+                    plugins: [["import", {
+                        "libraryName": "antd-mobile",
+                        "style": "css"
+                    }]]
+                }
             },
             {
                 test: /\.(jpg|png)$/,
