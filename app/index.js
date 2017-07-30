@@ -1,19 +1,18 @@
+import storeFactory from './store';
 const React = require('react');
 const ReactDOM = require('react-dom');
 const Routes = require('./Routes');
-
-const Provider = require('react-redux');
+const Provider = require('react-redux').Provider;
 const initialState = require('./initialState');
 
 if(localStorage["favorites"])
     initialState.favorites = JSON.parse(localStorage["favorites"]);
 
-const storeFactory = require('./store');
 const store = storeFactory(initialState);
-store.subscribe(saveState);
 
 const saveState = () =>
     localStorage["favorites"] = JSON.stringify(store.getState().favorites);
+store.subscribe(saveState);
 
 //debug only
 /*window.React = React;
