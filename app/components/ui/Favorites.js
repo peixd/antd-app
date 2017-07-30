@@ -9,9 +9,7 @@ import PhoneItem from './PhoneItem';
 
 const Item = List.Item;
 
-const Favorites = (props) => {
-    const favorites = props.favorites;
-    console.log('props....', props);
+const Favorites = ({favorites}) => {
     return (
         <div>
             <div className="top_nav_bar">

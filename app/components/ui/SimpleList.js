@@ -17,33 +17,22 @@ const Link = ReactRouter.Link;
 const dateFormat = require('dateformat');
 const MAX = 5;
 
-const SimpleList = ({result, history, favorites, onShowNavBar=f=>f, onAddFav=f=>f, onChangeUrl=f=>f}) => {
+const SimpleList = ({result, history, favorites, onAddFav=f=>f}) => {
     return (
         <div>
             <div className="top_nav_bar">
                 <NavBar mode="dark"
                         iconName="false"
-                        leftContent={
-                            <Icon
-                                onClick={ (e)=> {
-                                    e.preventDefault();
-                                    //onShowNavBar(true);
-                                    onChangeUrl('/');
-                                    history.push('/');
-                                }}
-                                type="search-o-d"/>
-                        }
+                        leftContent={ <Icon type="search-o-d"/> }
                         rightContent={
                             <Icon
                                 onClick={ (e)=> {
                                     e.preventDefault();
-                                    onShowNavBar(true);
-                                    onChangeUrl('/favorites');
                                     history.push('/favorites');
                                 }}
                                 type="star-o-d"/>
                         }
-                        onLeftClick={ ((e) => {e.preventDefault(); onShowNavBar(true) }) }
+                        onLeftClick={ (e) => {e.preventDefault(); history.push('/'); }}
                 >靓号清单
                 </NavBar>
             </div>
@@ -78,6 +67,5 @@ const SimpleList = ({result, history, favorites, onShowNavBar=f=>f, onAddFav=f=>
         </div>
     );
 }
-
 
 export default SimpleList;

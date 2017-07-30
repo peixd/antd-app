@@ -10,13 +10,6 @@ export function changeResult(data) {
     }
 }
 
-export function changeUrl(data) {
-    return {
-        type: C.CHANGE_URL,
-        payload: data
-    }
-}
-
 export function changeQueryParams(data) {
     return {
         type: C.CHANGE_QUERY_PARAMS,
@@ -28,13 +21,6 @@ export function changeGeneralQuery(generalQuery) {
     return {
         type: C.GENERAL_QUERY,
         payload: generalQuery
-    }
-}
-
-export function showNavBar(data) {
-    return {
-        type: C.SHOW_NAV_BAR,
-        payload: data
     }
 }
 
@@ -70,13 +56,3 @@ export function fetching() {
         type: C.FETCHING
     }
 }
-/*
-export const changeCurrPage = (queryParams, isAdvancedQuery) => dispatch => {
-    dispatch({
-        type: C.CHANGE_CURR_PAGE,
-        payload: queryParams.currPage + 1
-    })
-    queryPhoneNumber(queryParams, isAdvancedQuery)
-        .then(res => console.log(res))
-        .catch(err => console.log(err.message))
-}*/

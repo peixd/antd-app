@@ -7,21 +7,20 @@ class BottomNav extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            hidden: false,
-        };
     }
 
     render() {
-        const {showNavBar, history, fetching, queryParams, generalQuery, favorites, newUrl} = this.props;
-        console.log("props...", this.props);
+        const {history, fetching, queryParams, generalQuery, favorites} = this.props;
+        if(this.props.location) {
+            const pathname = this.props.location.pathname;
+        }
         return (
             <div className="nav-container">
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
                     barTintColor="white"
-                    hidden={!showNavBar}
+                    hidden={pathname === '/show_result'}
                 >
 
                     <TabBar.Item
@@ -30,9 +29,8 @@ class BottomNav extends React.Component {
                         title="政策"
                         key="政策"
                         dot
-                        selected={ newUrl === '/info' ? true : false }
+                        selected={ pathname === '/info' ? true : false }
                         onPress={ () => {
-                                this.props.onChangeUrl('/info');
                                 history.push('/info');
                             }
                         }
@@ -43,12 +41,8 @@ class BottomNav extends React.Component {
                         selectedIcon={<Icon type="search-d" />}
                         title="查询"
                         key="查询"
-                        selected={newUrl === '/' ? true : false}
-                        onPress={ () => {
-                            this.props.onChangeUrl('/');
-                                history.push('/');
-                            }
-                        }
+                        selected={pathname === '/' ? true : false}
+                        onPress={ () => history.push('/') }
                         data-seed="logId1"
                     />
 
@@ -58,12 +52,8 @@ class BottomNav extends React.Component {
                         title="收藏"
                         key="收藏"
                         badge={favorites.length === 5 ? '满' : favorites.length}
-                        selected={ newUrl === '/favorites' ? true : false }
-                        onPress={ () => {
-                            this.props.onChangeUrl('/favorites');
-                                history.push('/favorites');
-                            }
-                        }
+                        selected={ pathname === '/favorites' ? true : false }
+                        onPress={ () => history.push('/favorites') }
                     />
 
                 </TabBar>
@@ -72,7 +62,7 @@ class BottomNav extends React.Component {
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
                     barTintColor="white"
-                    hidden={showNavBar}
+                    hidden={pathname !== '/show_result'}
                 >
 
                     <TabBar.Item
@@ -109,12 +99,6 @@ class BottomNav extends React.Component {
             </div>
         );
     }
-}
-
-BottomNav.propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
 }
 
 export default BottomNav;

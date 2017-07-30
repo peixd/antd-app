@@ -9,7 +9,6 @@ import './css/App.css';
 import BottomNav from './components/containers/BottomNav';
 
 const ReactRouter = require('react-router-dom');
-/*const Router = ReactRouter.BrowserRouter;*/
 const Router = ReactRouter.HashRouter;
 const Route = ReactRouter.Route;
 const Switch = ReactRouter.Switch;
@@ -27,7 +26,7 @@ const Routes = () =>
                     <Route path='/info' component={Info}/>
                     <Route path='/show_result' component={SimpleList} />
                     <Route path='/favorites' component={Favorites} />
-                    <Route render={() => (<h1>404</h1>)} />
+                    <Route component={BasicQueryForm} />
                 </Switch>
                 <WithRouterBottomNav />
             </div>

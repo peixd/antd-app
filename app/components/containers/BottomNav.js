@@ -1,27 +1,25 @@
 import { connect } from 'react-redux';
 import BottomNav from '../ui/BottomNav';
-import { changeCurrPage, changeResult, cancelFetching, fetching, changeUrl } from '../../actions';
 import Toast from 'antd-mobile/lib/toast';
 import 'antd-mobile/lib/toast/style/css';
+import {
+    changeCurrPage,
+    changeResult,
+    cancelFetching,
+    fetching }
+    from '../../actions';
 const api = require('../../utils/api');
 const queryPhoneNumber = api.queryPhoneNumber;
 
 const mapStateToProps = (state, props) => ({
-    showNavBar: state.showNavBar,
     queryParams: state.queryParams,
     generalQuery: state.generalQuery,
     fetching: state.fetching,
-    favorites: state.favorites,
-    newUrl: state.newUrl,
+    favorites: state.favorites
 })
 
 const mapDispatchToProps = dispatch => ({
 
-    onChangeUrl(url) {
-        dispatch(
-            changeUrl(url)
-        )
-    },
     onChangePageQuery(queryParams, nextPage, generalQuery) {
         const currPage = nextPage ? queryParams.currPage  + 1 : queryParams.currPage - 1;
         const thisQueryParams = Object.assign({}, queryParams, {currPage});

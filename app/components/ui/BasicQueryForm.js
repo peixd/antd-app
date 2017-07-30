@@ -97,7 +97,7 @@ class BasicQueryForm extends React.Component {
                     };
 
                     this.props.onResultChange(phoneNumberList, thisQueryParams, generalQuery);
-                    this.props.history.push('/show_result');
+                    this.props.history.replace('/show_result');
                     this.props.onShowNavBar(false);
                 }
 
