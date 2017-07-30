@@ -4,7 +4,7 @@
   "description": "Project for phone number query app.",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 88",
+    "start": "./node_modules/.bin/webpack-dev-server --port 88",
     "build": "set NODE_ENV='production' && webpack -p"
   },
   "author": "simpleasABC",
