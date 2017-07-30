@@ -1,7 +1,7 @@
 {
   "name": "ant-design-explore",
   "version": "1.0.0",
-  "description": "Project for ant design ui",
+  "description": "Project for phone number query app.",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --host 218.22.140.154 --port 88",
