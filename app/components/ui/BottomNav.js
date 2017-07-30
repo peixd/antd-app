@@ -25,8 +25,8 @@ class BottomNav extends React.Component {
                 >
 
                     <TabBar.Item
-                        icon={<Icon type={require('../../svgs/info-circle-o.svg')} />}
-                        selectedIcon={<Icon type={require('../../svgs/info-circle.svg')} />}
+                        icon={<Icon type={require('../../svgs/info-circle-o-d.svg')} />}
+                        selectedIcon={<Icon type={require('../../svgs/info-circle-d.svg')} />}
                         title="政策"
                         key="政策"
                         dot
@@ -39,8 +39,8 @@ class BottomNav extends React.Component {
                     />
 
                     <TabBar.Item
-                        icon={<Icon type={require('../../svgs/search-o.svg')} />}
-                        selectedIcon={<Icon type={require('../../svgs/search.svg')} />}
+                        icon={<Icon type="search" />}
+                        selectedIcon={<Icon type={require('../../svgs/search-d.svg')} />}
                         title="查询"
                         key="查询"
                         selected={newUrl === '/' ? true : false}
@@ -53,8 +53,8 @@ class BottomNav extends React.Component {
                     />
 
                     <TabBar.Item
-                        icon={<Icon type={require('../../svgs/star-o.svg')} />}
-                        selectedIcon={<Icon type={require('../../svgs/star.svg')} />}
+                        icon={<Icon type={require('../../svgs/star-o-d.svg')} />}
+                        selectedIcon={<Icon type={require('../../svgs/star-d.svg')} />}
                         title="收藏"
                         key="收藏"
                         badge={favorites.length === 5 ? '满' : favorites.length}
