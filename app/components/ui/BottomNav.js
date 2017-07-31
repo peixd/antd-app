@@ -34,7 +34,7 @@ class BottomNav extends React.Component {
 
                     <TabBar.Item
                         icon={<Icon type={require('../../svgs/search-o.svg')} />}
-                        selectedIcon={<Icon type={require('../../svgs/search.svg')} />}
+                        selectedIcon={<Icon type={require('../../svgs/search2.svg')} />}
                         title="查询"
                         key="查询"
                         selected={pathname === '/' ? true : false}

@@ -28,14 +28,14 @@ const SimpleList = ({result, history, favorites, onAddFav=f=>f}) => {
             <div className="top_nav_bar">
                 <NavBar mode="dark"
                         iconName="false"
-                        leftContent={ <Icon type="search-o-d"/> }
+                        leftContent={<Icon type={require('../../svgs/search-o.svg')} />}
                         rightContent={
                             <Icon
                                 onClick={ (e)=> {
                                     e.preventDefault();
                                     history.push('/favorites');
                                 }}
-                                type="star-o-d"/>
+                                type={require('../../svgs/star-o.svg')}/>
                         }
                         onLeftClick={ (e) => {e.preventDefault(); history.push('/'); }}
                 >靓号清单
