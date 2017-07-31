@@ -26,10 +26,6 @@ const Favorites = ({favorites, onRemoveFav=f=>f}) => {
                                     autoClose
                                     right={[
                                         {
-                                            text: '取消',
-                                            style: { backgroundColor: '#ddd', color: 'white' },
-                                        },
-                                        {
                                             text: '删除',
                                             onPress: () => onRemoveFav(index),
                                             style: { backgroundColor: '#F4333C', color: 'white' },
