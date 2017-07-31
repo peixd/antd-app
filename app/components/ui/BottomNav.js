@@ -23,8 +23,8 @@ class BottomNav extends React.Component {
                 >
 
                     <TabBar.Item
-                        icon={<Icon type="info-circle-o-d" />}
-                        selectedIcon={<Icon type="info-circle-d" />}
+                        icon={<Icon type={require('../../svgs/info-circle-o.svg')} />}
+                        selectedIcon={<Icon type={require('../../svgs/info-circle.svg')} />}
                         title="政策"
                         key="政策"
                         dot
@@ -33,8 +33,8 @@ class BottomNav extends React.Component {
                     />
 
                     <TabBar.Item
-                        icon={<Icon type="search-o-d" />}
-                        selectedIcon={<Icon type="search-d" />}
+                        icon={<Icon type={require('../../svgs/search-o.svg')} />}
+                        selectedIcon={<Icon type={require('../../svgs/search.svg')} />}
                         title="查询"
                         key="查询"
                         selected={pathname === '/' ? true : false}
@@ -43,8 +43,8 @@ class BottomNav extends React.Component {
                     />
 
                     <TabBar.Item
-                        icon={<Icon type="star-o-d" />}
-                        selectedIcon={<Icon type="star-d" />}
+                        icon={<Icon type={require('../../svgs/star-o.svg')} />}
+                        selectedIcon={<Icon type={require('../../svgs/star.svg')} />}
                         title="收藏"
                         key="收藏"
                         badge={favorites.length === 5 ? '满' : favorites.length}
@@ -64,7 +64,7 @@ class BottomNav extends React.Component {
                     <TabBar.Item
                         icon={
                             queryParams.currPage > 1　?
-                            <Icon type="prev-d" /> :<div />
+                                <Icon type={require('../../svgs/prev.svg')} /> :<div />
                         }
                         key="prev"
                         onPress={() => {
@@ -81,7 +81,7 @@ class BottomNav extends React.Component {
                     <TabBar.Item
                         icon={
                             queryParams.currPage != queryParams.totalPages ?
-                            <Icon type="next-d" /> : <div />
+                                <Icon type={require('../../svgs/next.svg')} /> : <div />
                         }
                         key="next"
                         onPress={() => {

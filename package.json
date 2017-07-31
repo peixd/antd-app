@@ -4,7 +4,7 @@
   "description": "Project for phone number query app.",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --port 88",
+    "start": "./node_modules/.bin/webpack-dev-server --host 218.22.140.154 --port 88",
     "build": "set NODE_ENV='production' && webpack -p"
   },
   "author": "simpleasABC",
@@ -37,22 +37,20 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "style-loader": "^0.16.0",
-    "svg-sprite-loader": "^0.3.1",
+    "svg-sprite-loader": "^0.2.0",
     "url-loader": "^0.5.7",
     "webpack": "^2.3.1",
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
-    "antd-mobile": "^1.6.0",
+    "antd-mobile": "^1.5.0",
     "axios": "^0.16.0",
     "babel-polyfill": "^6.23.0",
     "dateformat": "^2.0.0",
     "prop-types": "^15.5.4",
-    "qt": "^0.1.0",
     "rc-form": "^1.4.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-native": "^0.46.4",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
