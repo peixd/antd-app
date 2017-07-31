@@ -1,12 +1,4 @@
 import React from 'react';
-/*import 'antd-mobile/lib/nav-bar/style/css';
-import NavBar from 'antd-mobile/lib/nav-bar';
-
-import 'antd-mobile/lib/tabs/style/css';
-import Tabs from 'antd-mobile/lib/tabs';
-
-import 'antd-mobile/lib/list/style/css';
-import List from 'antd-mobile/lib/list';*/
 
 import { NavBar, Tabs, List } from 'antd-mobile';
 

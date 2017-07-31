@@ -1,6 +1,4 @@
 import React from 'react';
-/*import Icon from 'antd-mobile/lib/icon';
-import 'antd-mobile/lib/icon/style/css';*/
 import {Icon} from 'antd-mobile';
 import '../../css/InfoItem.css';
 

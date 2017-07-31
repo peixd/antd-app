@@ -1,23 +1,7 @@
 import React from 'react';
-import List from 'antd-mobile/lib/list';
-import 'antd-mobile/lib/list/style/css';
-import InputItem from 'antd-mobile/lib/input-item';
-import 'antd-mobile/lib/input-item/style/css';
-import WhiteSpace from 'antd-mobile/lib/white-space';
-import 'antd-mobile/lib/white-space/style/css';
-import Button from 'antd-mobile/lib/button';
-import 'antd-mobile/lib/button/style/css';
-import Icon from 'antd-mobile/lib/icon';
-import 'antd-mobile/lib/icon/style/css';
-import '../../css/QueryForm.css';
 import createForm from 'rc-form/lib/createForm';
-import Picker from 'antd-mobile/lib/picker';
-import 'antd-mobile/lib/picker/style/css';
-import Toast from 'antd-mobile/lib/toast';
-import 'antd-mobile/lib/toast/style/css';
-
-import NavBar from 'antd-mobile/lib/nav-bar';
-import 'antd-mobile/lib/nav-bar/style/css';
+import '../../css/QueryForm.css';
+import {List, InputItem, WhiteSpace, Button, Icon, Picker, Toast, NavBar} from 'antd-mobile';
 
 const api = require('../../utils/api');
 const queryPhoneNumberAndTotal = api.queryPhoneNumberAndTotal;

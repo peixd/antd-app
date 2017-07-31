@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import BottomNav from '../ui/BottomNav';
-import Toast from 'antd-mobile/lib/toast';
-import 'antd-mobile/lib/toast/style/css';
+import {Toast} from 'antd-mobile';
 import {
     changeCurrPage,
     changeResult,
