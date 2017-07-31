@@ -22,6 +22,7 @@ import 'antd-mobile/lib/nav-bar/style/css';
 const api = require('../../utils/api');
 const queryPhoneNumberAndTotal = api.queryPhoneNumberAndTotal;
 const tailReg = [
+    {label: '不选', value: ''},
     {label:'AA', value: 'AA'},
     {label:'AAA', value: 'AAA'},
     {label:'ABC', value: 'ABC'},
@@ -34,6 +35,7 @@ const tailReg = [
 ];
 
 const headThree = [
+    {label: '不选', value: ''},
     {label: '133', value: '133'},
     {label: '153', value: '153'},
     {label: '173', value: '173'},
@@ -80,7 +82,7 @@ class BasicQueryForm extends React.Component {
                         phoneNumber: this.state.phoneNumber,
                         headThree: headThree,
                         bodyFour: this.state.bodyFour,
-                        tailFour: this.tailFour,
+                        tailFour: this.state.tailFour,
                         tailReg: tailReg,
                         currPage: 1,
                         pageSize: 10,
