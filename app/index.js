@@ -14,6 +14,8 @@ const saveState = () =>
     localStorage["favorites"] = JSON.stringify(store.getState().favorites);
 store.subscribe(saveState);
 
+window.fastClick = require('fastclick');
+
 //debug only
 /*window.React = React;
 window.store = store;*/
