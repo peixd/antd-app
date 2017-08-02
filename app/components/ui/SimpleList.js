@@ -2,11 +2,10 @@ import React from 'react';
 
 import {Icon, NavBar, Toast, List} from 'antd-mobile';
 
-import PhoneItem from './PhoneItem';
+import PhoneItems from './PhoneItems';
 import '../../css/SimpleList.css';
 
 const Item = List.Item;
-const dateFormat = require('dateformat');
 const MAX = 5;
 
 const SimpleList = ({result, history, favorites, onAddFav=f=>f}) => {
@@ -34,24 +33,8 @@ const SimpleList = ({result, history, favorites, onAddFav=f=>f}) => {
                     {
                         result.map(function(item, index){
                             return (
-                                <Item
-                                    key={index}
-                                    extra={<Icon
-                                        size="small"
-                                        style={{ color: 'yellow', alignSelf: 'flex-end' }}
-                                        type="star-o-d"
-                                        onClick={ (e) => {
-                                            e.preventDefault();
-                                            if(favorites.length === MAX)
-                                                return Toast.fail("收藏满", 2)
-                                            const newItem = Object.assign({}, item);
-                                            newItem.date = dateFormat(new Date(), 'yy-mm-dd');
-                                            onAddFav(newItem);
-                                            Toast.success("收藏成功", 1);
-                                        } } />}
-                                >
-                                    <PhoneItem item={item} showStart={true}/>
-                                </Item>);
+                                <PhoneItems key={index} elem={ {item, index, favorites, onAddFav} }/>
+                            );
                         })
                     }
                 </List>
