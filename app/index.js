@@ -18,6 +18,8 @@ store.subscribe(saveState);
 /*window.React = React;
 window.store = store;*/
 
+
+
 ReactDOM.render(
     <Provider store={store}>
         <Routes/>
