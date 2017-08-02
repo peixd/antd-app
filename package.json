@@ -4,7 +4,7 @@
   "description": "Project for phone number query app.",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --host 218.22.140.154 --port 88",
+    "start": "./node_modules/.bin/webpack-dev-server --port 88",
     "build": "set NODE_ENV='production' && webpack -p"
   },
   "author": "simpleasABC",
@@ -51,6 +51,7 @@
     "rc-form": "^1.4.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-fastclick": "^3.0.2",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"

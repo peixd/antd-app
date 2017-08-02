@@ -17,5 +17,13 @@
 </head>
 <body>
     <div id="app"></div>
+    <script type="text/javascript">
+        if ('addEventListener' in document) {
+            window.addEventListener('load', function() {
+                window.fastClick.attach(document.body);
+            }, false);
+            console.log('added...');
+        }
+    </script>
 </body>
 </html>
