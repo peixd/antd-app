@@ -73,6 +73,13 @@ class BasicQueryForm extends React.Component {
                         totalPages: Math.ceil(total / 10)
                     };
 
+                    // 判断结果中是否有号码已经被收藏
+                    phoneNumberList.map(item =>
+                         (this.props.favorites.some(
+                            (elem, idx, array) =>
+                                item.PHONE_NUMBER === elem.PHONE_NUMBER) ?
+                            item.hasFav = true : item.hasFav = false))
+
                     this.props.onResultChange(phoneNumberList, thisQueryParams, generalQuery);
                     this.props.history.push('/show_result');
                 }

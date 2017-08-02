@@ -19,7 +19,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = dispatch => ({
 
-    onChangePageQuery(queryParams, nextPage, generalQuery) {
+    onChangePageQuery(queryParams, nextPage, generalQuery, favorites) {
         const currPage = nextPage ? queryParams.currPage  + 1 : queryParams.currPage - 1;
         const thisQueryParams = Object.assign({}, queryParams, {currPage});
         Toast.loading('查询中...', 10);
@@ -30,8 +30,16 @@ const mapDispatchToProps = dispatch => ({
         queryPhoneNumber(thisQueryParams, generalQuery)
             .then(
                 res => {
+                    // 判断结果中是否有号码已经被收藏
+                    const data = res.data;
+                    data.map(item =>
+                        (favorites.some(
+                            (elem, idx, array) =>
+                            item.PHONE_NUMBER === elem.PHONE_NUMBER) ?
+                            item.hasFav = true : item.hasFav = false))
+
                     dispatch(
-                        changeResult(res.data)
+                        changeResult(data)
                     )
                     dispatch(
                         changeCurrPage(currPage)

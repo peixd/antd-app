@@ -1,7 +1,4 @@
 import React from 'react';
-/*import TabBar from 'antd-mobile/lib/tab-bar';*/
-/*import Icon from 'antd-mobile/lib/icon';
-import 'antd-mobile/lib/icon/style/css';*/
 import {Icon, TabBar} from 'antd-mobile';
 
 class BottomNav extends React.Component {
@@ -69,7 +66,7 @@ class BottomNav extends React.Component {
                         key="prev"
                         onPress={() => {
                             if(!fetching && queryParams.currPage > 1)
-                                this.props.onChangePageQuery(queryParams, false, generalQuery);
+                                this.props.onChangePageQuery(queryParams, false, generalQuery, favorites);
                         }}
                     />
 
@@ -86,7 +83,7 @@ class BottomNav extends React.Component {
                         key="next"
                         onPress={() => {
                             if(!fetching && queryParams.currPage != queryParams.totalPages)
-                                this.props.onChangePageQuery(queryParams, true, generalQuery);
+                                this.props.onChangePageQuery(queryParams, true, generalQuery, favorites);
                         }}
                     />
 

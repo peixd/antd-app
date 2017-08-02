@@ -4,7 +4,8 @@ import {changeResult, changeQueryParams, changeGeneralQuery} from '../../actions
 
 const mapStateToProps = (state, props) => ({
     queryParams: state.queryParams,
-    generalQuery: state.generalQuery
+    generalQuery: state.generalQuery,
+    favorites: state.favorites
 })
 
 const mapDispatchToProps = dispatch => ({
