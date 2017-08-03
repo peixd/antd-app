@@ -1,8 +1,5 @@
 import C from './constants';
 
-const api = require('./utils/api');
-const queryPhoneNumber = api.queryPhoneNumber;
-
 export function changeResult(data) {
     return {
         type: C.CHANGE_RESULT,

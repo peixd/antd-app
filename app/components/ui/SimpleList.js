@@ -1,12 +1,9 @@
 import React from 'react';
 
-import {Icon, NavBar, Toast, List} from 'antd-mobile';
+import {Icon, NavBar, List} from 'antd-mobile';
 
 import PhoneItems from './PhoneItems';
 import '../../css/SimpleList.css';
-
-const Item = List.Item;
-const MAX = 5;
 
 const SimpleList = ({result, history, favorites, onAddFav=f=>f}) => {
     return (

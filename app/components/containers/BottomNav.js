@@ -33,10 +33,8 @@ const mapDispatchToProps = dispatch => ({
                     // 判断结果中是否有号码已经被收藏
                     const data = res.data;
                     data.map(item =>
-                        (favorites.some(
-                            (elem, idx, array) =>
-                            item.PHONE_NUMBER === elem.PHONE_NUMBER) ?
-                            item.hasFav = true : item.hasFav = false))
+                        (item.hasFav = favorites.some( elem =>
+                            item.PHONE_NUMBER === elem.PHONE_NUMBER)))
 
                     dispatch(
                         changeResult(data)

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Icon, TabBar} from 'antd-mobile';
 
+const MAX = 5;
 class BottomNav extends React.Component {
     constructor(props) {
         super(props);
@@ -44,7 +45,7 @@ class BottomNav extends React.Component {
                         selectedIcon={<Icon type={require('../../svgs/star.svg')} />}
                         title="收藏"
                         key="收藏"
-                        badge={favorites.length === 5 ? '满' : favorites.length}
+                        badge={favorites.length === MAX ? '满' : favorites.length}
                         selected={ pathname === '/favorites' ? true : false }
                         onPress={ () => history.push('/favorites') }
                     />
